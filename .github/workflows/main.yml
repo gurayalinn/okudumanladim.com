@@ -21,7 +21,6 @@ jobs:
           log-level: minimal
           security: strict
           timeout: 60000
-          dangerous-clean-slate: true
           dry-run: true
           exclude: |
             **/.env*
