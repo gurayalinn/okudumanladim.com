@@ -33,6 +33,7 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_HOST: ${MYSQL_HOST}
+      DEV_MODE: true
     stdin_open: true
     tty: true
     depends_on:

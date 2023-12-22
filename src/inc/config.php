@@ -1,4 +1,5 @@
 <?php
+
 // Database configuration
 if(!isset($_ENV["DEV_MODE"])) {
 $host = "localhost";

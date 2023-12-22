@@ -38,4 +38,4 @@
     <script async src="https://www.google-analytics.com/analytics.js"></script>
  End Google Analytics -->
 
-<script async src="https://eu.umami.is/script.js" data-website-id="e6b24ed7-3de7-4939-adbf-b82a8e1dfe2d"></script>
+<script async defer src="https://eu.umami.is/script.js" data-website-id="e6b24ed7-3de7-4939-adbf-b82a8e1dfe2d" data-cache="true"></script>
