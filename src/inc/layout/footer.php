@@ -61,12 +61,27 @@
     </footer>
     <!-- Scripts -->
     <script src="vendor/js/main.js" defer></script>
-    <script src="vendor/js/jquery.min.js" defer></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js" defer></script>
+    <script src="vendor/js/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="vendor/js/popper.min.js"></script>
     <script src="vendor/js/disable-devtool.js"></script>
     <?php include 'head/analytics.php'; ?>
     </div>
     <!-- /#wrapper -->
+    <!--
+    <iframe
+      src="https://www.googletagmanager.com/ns.html?id=G-"
+      tabindex="0"
+      height="0"
+      width="0"
+      style="display: none; visibility: hidden"
+      scrolling="auto"
+      title="Google Tag Manager"
+      allowfullscreen="true"
+      aria-hidden="true"
+      aria-atomic="true"
+      aria-label="Google Tag Manager"
+      async
+    ></iframe>-->
   </body>
 </html>
