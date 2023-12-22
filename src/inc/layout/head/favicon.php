@@ -1,70 +1,16 @@
 
     <!-- FAVICON -->
-    <meta name="msapplication-TileColor" content="#ffffff" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" sizes="16x16 32x32">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" sizes="any">
+    <link rel="mask-icon" href="favicon.svg" type="image/svg+xml" color="#ffffff">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-config" content="browserconfig.xml">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+    <link rel="icon" href="<?php echo rtrim($_SERVER['PHP_SELF'], basename($_SERVER['PHP_SELF'])); ?>favicon.ico" type="image/x-icon">
 
-    <link
-      id="favicon"
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="favicon.ico"
-    />
-
-
-    <meta
-      name="msapplication-TileImage"
-      content="./public/assets/images/favicon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/public/assets/images/favicon/icon-16x16.png"
-    />
-
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/public/assets/images/favicon/icon-32x32.png"
-    />
-
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="128x128"
-      href="/public/assets/images/favicon/icon-128x128.png"
-    />
-
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="144x144"
-      href="/public/assets/images/favicon/icon-144x144.png"
-    />
-
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="192x192"
-      href="/public/assets/images/favicon/icon-192x192.png"
-    />
-
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="512x512"
-      href="/public/assets/images/favicon/icon-512x512.png"
-    />
-
-    <link
-      rel="mask-icon"
-      type="image/svg+xml"
-      href="/public/assets/images/favicon.svg"
-    />
-
-    <link
-      href="/public/assets/images/favicon/icon-128x128.png"
-      rel="apple-touch-icon"
-      type="image/png"
-    />
-
+    <!-- RSS/MANIFEST -->
+    <link rel="manifest" href="site.webmanifest" crossorigin="use-credentials">
+    <link rel="alternate" type="application/rss+xml" href="feed.xml" />

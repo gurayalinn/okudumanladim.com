@@ -72,7 +72,7 @@ html {
     color-scheme: dark;
     --page-color: black;
     --ink-color: white;
-    --highlight-color: pink;
+    --highlight-color: red;
   }
   img {
     opacity: 0.75;
@@ -122,13 +122,6 @@ body {
     --current-background: var(--dark-background);
     --current-foreground: var(--dark-forground);
   }
-}
-
-/* Remove default margin */
-* {
-  margin: 0;
-  padding: 0;
-  line-height: calc(1em + 0.5rem);
 }
 
 /* Set core body defaults */

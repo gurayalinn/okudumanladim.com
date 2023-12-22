@@ -83,4 +83,4 @@ projesi.
 </article>
 </main>
 
-<?php include_once('inc/layout/footer.php'); ?>
+<?php include('inc/layout/footer.php'); ?>

@@ -11,9 +11,9 @@ require_once "inc/layout/head/meta.php";
         <div id="wrapper" class="wrapper">
           <div itemscope itemtype="https://schema.org/WebSite">
           <meta itemprop="url" content="https://okudumanladim.com/" />
-          <meta itemprop="name" content="Güray ALIN" />
-           <meta itemprop="alternateName" content="GRY" />
-        </div><!--
+          <meta itemprop="name" content="okudumanladim.com" />
+          </div>
+<!--
     <iframe
       src="https://www.googletagmanager.com/ns.html?id=G-"
       tabindex="0"

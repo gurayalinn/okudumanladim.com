@@ -1,5 +1,5 @@
 
-    <!-- FONT 
+    <!-- FONT
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -22,10 +22,12 @@
     <link
       rel="stylesheet"
       href="vendor/bootstrap/css/bootstrap.min.css"
+      media="all"
     />
     <link
       rel="stylesheet"
       href="vendor/bootstrap/bootstrap-icons/font/bootstrap-icons.min.css"
+      media="all"
     />
     <link
       rel="stylesheet"

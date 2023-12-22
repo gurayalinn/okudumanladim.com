@@ -60,3 +60,9 @@ updateTheme()
 window
   .matchMedia('(prefers-color-scheme: dark)')
   .addEventListener('change', updateTheme)
+
+
+//DisableDevtool()
+
+document.documentElement.className =
+    document.documentElement.className.replace('no-js', 'js')

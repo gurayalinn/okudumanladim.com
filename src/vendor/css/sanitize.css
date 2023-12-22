@@ -568,7 +568,8 @@ main {
   font-family: ui-monospace;
   font-weight: bold;
   src: local('.AppleSystemUIFontMonospaced-Bold'), local('Segoe UI Mono Bold'),
-    local('UbuntuMono-Bold'), local('vendor/font/Roboto/Roboto-Mono-Bold'), local('Menlo-Bold');
+    local('UbuntuMono-Bold'), local('vendor/font/Roboto/Roboto-Mono-Bold'),
+    local('Menlo-Bold');
 }
 
 @font-face {
@@ -577,7 +578,8 @@ main {
   font-weight: bold;
   src: local('.AppleSystemUIFontMonospaced-BoldItalic'),
     local('Segoe UI Mono Bold Italic'), local('UbuntuMono-BoldItalic'),
-    local('vendor/font/Roboto/Roboto-Mono-BoldItalic'), local('Menlo-BoldItalic');
+    local('vendor/font/Roboto/Roboto-Mono-BoldItalic'),
+    local('Menlo-BoldItalic');
 }
 
 /**

@@ -50,7 +50,8 @@
         target="_self"
         type="button"
         class="btn btn-xs btn-primary rounded-circle"
-        tabindex="1"
+        aria-label="Page Top"
+        tabindex="0"
         rel="top"
         id="btn-back-to-top"
       >
@@ -59,18 +60,12 @@
     </footer>
     <!-- Scripts -->
     <script src="vendor/js/main.js" defer></script>
-    <script src="vendor/js/jquery.min.js"></script>
-    <script src="vendor/js/htmx.min.js"></script>
+    <script src="vendor/js/jquery.min.js" defer></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js" defer></script>
     <script src="vendor/js/popper.min.js"></script>
-    <script src="vendor/js/lodash.min.js"></script>
     <script src="vendor/js/disable-devtool.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <?php include 'head/analytics.php'; ?>
     </div>
     <!-- /#wrapper -->
   </body>
-  <script>
-    DisableDevtool()
-    document.documentElement.className =
-      document.documentElement.className.replace('no-js', 'js')
-  </script>
 </html>

@@ -29,27 +29,13 @@ class connect_pdo
             $con->setAttribute( PDO::MYSQL_ATTR_INIT_COMMAND, "SET CHARACTER_SET_CONNECTION=utf8");  //  set default connection charset utf-8
             $con->setAttribute( PDO::MYSQL_ATTR_INIT_COMMAND, "SET SQL_MODE = ''");  //  return all sql requests as UTF-8
             $con->setAttribute( PDO::MYSQL_ATTR_INIT_COMMAND, "SET time_zone = 'Europe/Berlin'");  //  set default connection timezone
-            $con->setAttribute( PDO::MYSQL_ATTR_INIT_COMMAND, "SET @@session.time_zone = 'Europe/Berlin'");  //  set default session connection timezone
-            $con->setAttribute( PDO::MYSQL_ATTR_INIT_COMMAND, "SET @@global.time_zone = 'Europe/Berlin'");//  set default global connection timezone
             $con->setAttribute( PDO::MYSQL_ATTR_INIT_COMMAND, "SET @@session.sql_mode = ''");
             $con->setAttribute( PDO::MYSQL_ATTR_INIT_COMMAND, "SET @@global.sql_mode = ''");
-            $con->setAttribute( PDO::MYSQL_ATTR_INIT_COMMAND, "SET @@session.innodb_strict_mode = 0");
-            $con->setAttribute( PDO::MYSQL_ATTR_INIT_COMMAND, "SET @@global.innodb_strict_mode = 0");
-            $con->setAttribute( PDO::MYSQL_ATTR_INIT_COMMAND, "SET @@session.innodb_flush_log_at_trx_commit = 2");
-            $con->setAttribute( PDO::MYSQL_ATTR_INIT_COMMAND, "SET @@global.innodb_flush_log_at_trx_commit = 2");
-            $con->setAttribute( PDO::MYSQL_ATTR_INIT_COMMAND, "SET @@session.innodb_lock_wait_timeout = 50");
-            $con->setAttribute( PDO::MYSQL_ATTR_INIT_COMMAND, "SET @@global.innodb_lock_wait_timeout = 50");
-            $con->setAttribute( PDO::MYSQL_ATTR_INIT_COMMAND, "SET @@session.max_allowed_packet = 1073741824");
             $con->setAttribute( PDO::MYSQL_ATTR_INIT_COMMAND, "SET @@global.max_allowed_packet = 1073741824");
-            $con->setAttribute( PDO::MYSQL_ATTR_INIT_COMMAND, "SET @@session.net_read_timeout = 3600");
             $con->setAttribute( PDO::MYSQL_ATTR_INIT_COMMAND, "SET @@global.net_read_timeout = 3600");
-            $con->setAttribute( PDO::MYSQL_ATTR_INIT_COMMAND, "SET @@session.net_write_timeout = 3600");
             $con->setAttribute( PDO::MYSQL_ATTR_INIT_COMMAND, "SET @@global.net_write_timeout = 3600");
-            $con->setAttribute( PDO::MYSQL_ATTR_INIT_COMMAND, "SET @@session.wait_timeout = 3600");
             $con->setAttribute( PDO::MYSQL_ATTR_INIT_COMMAND, "SET @@global.wait_timeout = 3600");
-            $con->setAttribute( PDO::MYSQL_ATTR_INIT_COMMAND, "SET @@session.connect_timeout = 3600");
             $con->setAttribute( PDO::MYSQL_ATTR_INIT_COMMAND, "SET @@global.connect_timeout = 3600");
-            $con->setAttribute( PDO::MYSQL_ATTR_INIT_COMMAND, "SET @@session.group_concat_max_len = 1073741824");
             $con->setAttribute( PDO::MYSQL_ATTR_INIT_COMMAND, "SET @@global.group_concat_max_len = 1073741824");
         }
         catch (PDOException $err) {

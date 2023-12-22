@@ -7,48 +7,38 @@
 >
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta http-equiv="imagetoolbar" content="no" />
-    <meta http-equiv="msthemecompatible" content="no" />
-    <meta http-equiv="cleartype" content="on" />
-    <meta http-equiv="Expires" content="0" />
-    <meta http-equiv="Pragma" content="no-cache" />
-     <!-- MOBILE -->
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1 user-scalable=1"
-    />
-    <meta name="HandheldFriendly" content="true" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta name="apple-mobile-web-app-title" content="Güray ALIN" />
-    <meta name="application-name" content="Güray ALIN" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="MobileOptimized" content="320" />
-    <meta name="format-detection" content="telephone=no" />
-
-    <meta
-    http-equiv="Page-Enter"
-    content="RevealTrans(Duration=2.0,Transition=2)"
-    />
-    <meta
-    http-equiv="Page-Exit"
-    content="RevealTrans(Duration=3.0,Transition=12)"
-    />
-
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1, maximum-scale=2.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="content-language" content="tr">
     <base target="_top" href="/" />
     <title>ANASAYFA | okudumanladim.com</title>
     <meta name="description" content="Kişisel bilgi güvenliği farkındalığının artırılmasına yönelik interaktif web platformu." />
-    <meta name="keywords" content="Siver güvenlik, " />
+    <meta name="keywords" content="Siber Güvenlik, Bilgi Güvenliği, Siber Tehditler, Ağ Güvenliği, Veri Koruma, Kötü Amaçlı Yazılımlar, Şifreleme, Güvenlik Duvarı, Kimlik Doğrulama, Sızma Testi" />
+        <!-- ROBOTS -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-video-preview:-1, max-image-preview:-1" />
+    <link rel="canonical" href="https://okudumanladim.com/" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="google-site-verification" content="KEY" />
+    <link rel="author" href="humans.txt" />
+    <link rel="copyright" href="license.php" />
+    <link rel="me" href="https://twitter.com/gurayalin" />
+    <link rel="me" href="https://www.linkedin.com/in/gurayalin" />
 
-    <!-- LANGUAGE -->
+        <!-- LANGUAGE -->
     <link rel="alternate" href="https://www.okudumanladim.com/en/" hreflang="en" />
     <link rel="alternate" href="https://www.okudumanladim.com/" hreflang="x-default" />
-    <meta http-equiv="content-language" content="tr" />
+     <!-- MOBILE -->
+
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="okudumanladim.com" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="okudumanladim.com" />
 
     <!-- THEME -->
     <meta name="supported-color-schemes" content="light dark" />
-    <meta name="theme-color" content="#ffffff" />
     <meta name="color-scheme" content="light dark" />
     <meta
       name="theme-color"
@@ -61,25 +51,8 @@
       media="(prefers-color-scheme: dark)"
     />
 
-    <!-- RSS/MANIFEST -->
-    <link rel="alternate" type="application/rss+xml" href="feed.xml" />
-    <link
-      rel="manifest"
-      href="site.webmanifest"
-      crossorigin="use-credentials"
-    />
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      href="https://okudumanladim.com/feed.xml"
-    />
     <?php include_once 'csp.php'; ?>
-    <?php include_once 'css.php'; ?>
-    <?php include_once 'robots.php'; ?>
     <?php include_once 'og.php'; ?>
-    <?php include_once 'social.php'; ?>
     <?php include_once 'favicon.php'; ?>
-    <?php include_once 'analytics.php'; ?>
-
-    <link rel="author" href="humans.txt" />
+    <?php include_once 'css.php'; ?>
   </head>
