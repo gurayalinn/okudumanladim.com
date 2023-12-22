@@ -26,11 +26,6 @@
     />
     <link
       rel="stylesheet"
-      href="vendor/bootstrap/bootstrap-icons/font/bootstrap-icons.min.css"
-      media="all"
-    />
-    <link
-      rel="stylesheet"
       href="vendor/css/print.min.css"
       media="print"
     />

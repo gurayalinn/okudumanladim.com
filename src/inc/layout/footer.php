@@ -51,14 +51,12 @@
       </social>
       <a
         target="_self"
-        type="button"
-        class="btn btn-xs btn-primary rounded-circle"
         aria-label="Page Top"
         tabindex="0"
         rel="top"
         id="btn-back-to-top"
       >
-        <i class="bi bi-arrow-up-circle"></i>
+        👆
       </a>
     </footer>
     <!-- Scripts -->

@@ -11,14 +11,12 @@
             &nbsp;
             <li>
               <a
-        type="button"
-        class="breadcrumb-item"
         tabindex="0"
         target="_self"
         rel="top"
         id="btnSwitch"
       >
-        <i class="bi bi-moon"></i>
+        🌓
       </a></li>
           </ol>
         </nav>

@@ -11,14 +11,12 @@
             &nbsp;
             <li>
               <a
-        type="button"
-        class="breadcrumb-item"
         tabindex="0"
         target="_self"
         rel="top"
         id="btnSwitch"
       >
-        <i class="bi bi-moon"></i>
+        🌓
       </a></li>
           </ol>
       </nav>
@@ -454,6 +452,5 @@ public licenses.
 
 Creative Commons may be contacted at creativecommons.org.
 </pre>
-https://analytics.eu.umami.is/share/DbXZOrTNnrfXGrL0/okudumanladim
 
 <?php include_once('inc/layout/footer.php'); ?>
