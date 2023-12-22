@@ -24,7 +24,6 @@
         </nav>
       </navbar>
     </header>
-<?php require_once('inc/utils/host.php'); ?>
 
     <main id="content">
       <article>
