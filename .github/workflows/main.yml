@@ -11,7 +11,7 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server-dir: public_html/
+          server-dir: /
           local-dir: src/
           server: ftp.okudumanladim.com
           username: ${{ secrets.username }}
