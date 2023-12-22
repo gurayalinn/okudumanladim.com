@@ -45,6 +45,8 @@
           <i><small>
         <a target="_blank" rel="twitter" href="https://twitter.com/gurayalin/"
           >TWITTER</a></i></small>
+        <a target="_blank" rel="analytics" href="https://analytics.eu.umami.is/share/DbXZOrTNnrfXGrL0/okudumanladim"
+          >ANALYTICS</a></i></small>
       </social>
       <a
         target="_self"

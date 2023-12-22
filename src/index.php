@@ -8,7 +8,7 @@
             <li class="breadcrumb-item">
               <a href="/license.php">LICENSE</a>
             </li>
-            &nbsp;
+            &nbsp;https://analytics.eu.umami.is/share/DbXZOrTNnrfXGrL0/okudumanladim
             <li>
               <a
         type="button"

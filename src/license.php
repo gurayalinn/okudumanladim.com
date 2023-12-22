@@ -454,5 +454,6 @@ public licenses.
 
 Creative Commons may be contacted at creativecommons.org.
 </pre>
+https://analytics.eu.umami.is/share/DbXZOrTNnrfXGrL0/okudumanladim
 
 <?php include_once('inc/layout/footer.php'); ?>
