@@ -24,14 +24,9 @@ jobs:
           dangerous-clean-slate: true
           dry-run: true
           exclude: |
-            **/README
             **/.env*
             **/.git*
             **/.git*/**
-            **/**.sql
             **/.docker*
             **/docker*
-            **/.prettier*
-            Makefile
-            **/.editorconfig*
             **/node_modules/**
