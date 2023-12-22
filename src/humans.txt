@@ -1,0 +1,16 @@
+﻿/* TEAM */
+	Chef: Guray ALIN
+	Contact: gurayalinn [at] gmail.com
+	Twitter: @gurayalin
+	From: Turkey
+
+/* THANKS */
+	Web designer: Guray ALIN
+	Twitter: @gurayalin
+	From: Turkey
+
+/* SITE */
+	Last update: 2023/12/21
+	Language: English / Turkish
+	Doctype: HTML5
+	IDE: Visual Studio Code

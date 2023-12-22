@@ -5,30 +5,33 @@ jobs:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v3
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v3
 
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-      with:
-        server-dir: public_html/
-        server: ftp.okudumanladim.com
-        username: ${{ secrets.username }}
-        password: ${{ secrets.password }}
-        protocol: ftp
-        port: 21
-        log-level: minimal
-        security: strict
-        timeout: 60000
-        dangerous-clean-slate: true
-        dry-run: true
-        exclude: |
-          **/README
-          **/.env*
-          **/.git*
-          **/.git*/**
-          **/**.sql
-          **/.docker*
-          **/.prettier*
-          **/.editorconfig*
-          **/node_modules/**
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server-dir: public_html/
+          local-dir: src/
+          server: ftp.okudumanladim.com
+          username: ${{ secrets.username }}
+          password: ${{ secrets.password }}
+          protocol: ftp
+          port: 21
+          log-level: minimal
+          security: strict
+          timeout: 60000
+          dangerous-clean-slate: true
+          dry-run: true
+          exclude: |
+            **/README
+            **/.env*
+            **/.git*
+            **/.git*/**
+            **/**.sql
+            **/.docker*
+            **/docker*
+            **/.prettier*
+            Makefile
+            **/.editorconfig*
+            **/node_modules/**

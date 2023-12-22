@@ -1,0 +1,23 @@
+# misc
+.DS_Store
+*.pem
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# vscode
+.vscode
+
+.github
+.git
+README
+LICENSE
+
+.cache
+dist
+build
+out
+

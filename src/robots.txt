@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Sitemap: https://okudumanladim.com/sitemap.xml
+Sitemap: https://www.okudumanladim.com/sitemap.xml
+Host: https://okudumanladim.com
+Disallow: /license/
+Disallow: /*.jpg
+Disallow: /*.png
+Disallow: /*.pdf
+Disallow: /*.webp
+Disallow: /*.gif$
+Disallow: /cgi-bin/
+Disallow: /tmp/

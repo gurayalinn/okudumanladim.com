@@ -1,2 +1,32 @@
 # okudumanladim.com
-Kişisel bilgi güvenliği farkındalığının artırılmasına yönelik interaktif web uygulaması
+
+## Kişisel bilgi güvenliği farkındalığının artırılmasına yönelik interaktif web uygulaması
+
+[![website](https://img.shields.io/website?url=https%3A%2F%2Fokudumanladim.com?label=okudumanladim.com&logo=github&logoColor=default)][website]
+
+### Projeyi geliştirmek için ilk önce "Docker" ile projemizi çalıştıralım
+
+```bash
+docker-compose up
+```
+
+- Projenin çalıştığı adres
+  [localhost:8081][dev]
+
+- phpMyAdmin çalıştığı adres
+  [localhost:8080][phpmyadmin]
+
+- MySQL çalıştığı port : 3306
+
+### Docker yüklü değil ise XAMPP ile çalışmaktadır
+
+[![GitHub](https://img.shields.io/github/license/gurayalinn/okudumanladim.com)][license]
+
+---
+
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a>
+
+[website]: https://okudumanladim.com
+[phpmyadmin]: http://localhost:8080
+[dev]: http://localhost:8081
+[license]: https://github.com/gurayalinn/okudumanladim.com/blob/master/LICENSE
