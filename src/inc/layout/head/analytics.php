@@ -1,6 +1,4 @@
-
-
- <!-- Google Analytics
+<!-- Google Analytics
     <meta name="google-analytics" content="G-" />
     <script
       async

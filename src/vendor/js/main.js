@@ -47,7 +47,6 @@ document.getElementById('btnSwitch').addEventListener('click', () => {
   }
 })
 
-
 function updateTheme() {
   const colorMode = window.matchMedia('(prefers-color-scheme: dark)').matches
     ? 'dark'
@@ -61,8 +60,9 @@ window
   .matchMedia('(prefers-color-scheme: dark)')
   .addEventListener('change', updateTheme)
 
-
 //DisableDevtool()
 
-document.documentElement.className =
-    document.documentElement.className.replace('no-js', 'js')
+document.documentElement.className = document.documentElement.className.replace(
+  'no-js',
+  'js'
+)

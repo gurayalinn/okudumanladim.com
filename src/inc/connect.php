@@ -84,4 +84,3 @@ $provider = function()
 };
 
 $factory = new StructureFactory( $provider );
-

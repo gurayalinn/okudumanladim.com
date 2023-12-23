@@ -1,5 +1,4 @@
-
-    <!-- FONT
+<!-- FONT
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -12,21 +11,8 @@
       as="style"
     /> -->
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="vendor/css/sanitize.css" />
-    <link
-      rel="stylesheet"
-      href="vendor/css/style.css"
-      media="all"
-    />
-    <link
-      rel="stylesheet"
-      href="vendor/bootstrap/css/bootstrap.min.css"
-      media="all"
-    />
-    <link
-      rel="stylesheet"
-      href="vendor/css/print.min.css"
-      media="print"
-    />
-
+<!-- CSS -->
+<link rel="stylesheet" href="vendor/css/sanitize.css" />
+<link rel="stylesheet" href="vendor/css/style.css" media="all" />
+<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" media="all" />
+<link rel="stylesheet" href="vendor/css/print.min.css" media="print" />
