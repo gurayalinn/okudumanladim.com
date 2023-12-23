@@ -392,6 +392,9 @@ AddDefaultCharset utf-8
 
     # (5)
     # RewriteOptions <options>
+    RewriteMap ^s/license "license.php"
+    RewriteMap ^s/en "en/index.html"
+    RewriteMap ^s/stats "stats.php"
 
 </IfModule>
 
@@ -488,8 +491,8 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
     # (2)
     # RewriteCond %{HTTPS} !=on
 
-    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-    RewriteRule ^ %{ENV:PROTO}://%1%{REQUEST_URI} [R=301,L]
+    # RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+    # RewriteRule ^ %{ENV:PROTO}://%1%{REQUEST_URI} [R=301,L]
 
 </IfModule>
 
@@ -535,19 +538,19 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 # subdomains for certain parts of your website.
 
-# <IfModule mod_rewrite.c>
+<IfModule mod_rewrite.c>
 
-# RewriteEngine On
+RewriteEngine On
 
 # # (1)
 
-# RewriteCond %{HTTPS} =on
+RewriteCond %{HTTPS} =on
 
-# RewriteRule ^ - [E=PROTO:https]
+RewriteRule ^ - [E=PROTO:https]
 
-# RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTPS} !=on
 
-# RewriteRule ^ - [E=PROTO:http]
+RewriteRule ^ - [E=PROTO:http]
 
 # # (2)
 
@@ -561,7 +564,7 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 # RewriteRule ^ %{ENV:PROTO}://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
-# </IfModule>
+</IfModule>
 
 #
 

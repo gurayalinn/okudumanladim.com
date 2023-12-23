@@ -26,6 +26,5 @@
       block-all-mixed-content;
       " />
     <!-- CSP CONFIG -->
-
     <link rel="preconnect" href="https://eu.umami.is" crossorigin />
     <link rel="dns-prefetch" href="https://eu.umami.is" />
