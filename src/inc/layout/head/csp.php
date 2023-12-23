@@ -12,7 +12,7 @@
       style-src   'self' https://fonts.gstatic.com https://cdn.jsdelivr.net;
       style-src-elem 'self' https://cdn.jsdelivr.net https://ssl.gstatic.com https://fonts.gstatic.com https://fonts.googleapis.com;
       font-src    'self' https://fonts.gstatic.com;
-      script-src  'self' 'nonce-8IBTHwOdqNKAWeKl7plt8g' https://cdn.jsdelivr.net https://eu.umami.is;
+      script-src  'strict-dynamic' 'nonce-8IBTHwOdqNKAWeKl7plt8g';
       script-src-elem 'self' 'nonce-8IBTHwOdqNKAWeKl7plt8g' https://cdn.jsdelivr.net https://eu.umami.is;
       img-src     'self' ;
       frame-src   'self' ;
@@ -21,6 +21,7 @@
       form-action 'self' ;
       child-src   'none' ;
       base-uri 'none';
+      require-trusted-types-for 'script';
       upgrade-insecure-requests;
       block-all-mixed-content;
       " />

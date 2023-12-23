@@ -1,12 +1,12 @@
-# Apache Server Configs v4.0.0 | MIT License
+# Apache Server Configs v6.0.0 | MIT License
 
 # https://github.com/h5bp/server-configs-apache
 
 # (!) Using `.htaccess` files slows down Apache, therefore, if you have
 
-# access to the main server configuration file (which is usually called
+# access to the main server configuration file (which is usually
 
-# `httpd.conf`), you should add this logic there.
+# called `httpd.conf`), you should add this logic there.
 
 #
 
@@ -46,9 +46,19 @@
 
 # Header set Access-Control-Allow-Origin "subdomain.example.com"
 
+#
+
+# (1) When `Access-Control-Allow-Origin` points to a specific rule rather
+
+# than `*`, then `Vary: Origin` should be sent along with the response.
+
 # <IfModule mod_headers.c>
 
 # Header set Access-Control-Allow-Origin "\*"
+
+# # (1)
+
+# # Header append Vary Origin
 
 # </IfModule>
 
@@ -68,7 +78,7 @@
 
 <IfModule mod_setenvif.c>
     <IfModule mod_headers.c>
-        <FilesMatch "\.(bmp|cur|gif|ico|jpe?g|a?png|svgz?|webp)$">
+        <FilesMatch "\.(avifs?|bmp|cur|gif|ico|jpe?g|jxl|a?png|svgz?|webp)$">
             SetEnvIf Origin ":" IS_CORS
             Header set Access-Control-Allow-Origin "*" env=IS_CORS
         </FilesMatch>
@@ -165,48 +175,6 @@ Options -MultiViews
 
 #
 
-# # INTERNET EXPLORER
-
-#
-
-# ----------------------------------------------------------------------
-
-# | Document modes |
-
-# ----------------------------------------------------------------------
-
-# Force Internet Explorer 8/9/10 to render pages in the highest mode
-
-# available in various cases when it may not.
-
-#
-
-# https://hsivonen.fi/doctype/#ie8
-
-#
-
-# (!) Starting with Internet Explorer 11, document modes are deprecated.
-
-# If your business still relies on older web apps and services that were
-
-# designed for older versions of Internet Explorer, you might want to
-
-# consider enabling `Enterprise Mode` throughout your company.
-
-#
-
-# https://msdn.microsoft.com/en-us/library/ie/bg182625.aspx#docmode
-
-# https://blogs.msdn.microsoft.com/ie/2014/04/02/stay-up-to-date-with-enterprise-mode-for-internet-explorer-11/
-
-# https://msdn.microsoft.com/en-us/library/ff955275.aspx
-
-<IfModule mod_headers.c>
-    Header always set X-UA-Compatible "IE=edge" "expr=%{CONTENT_TYPE} =~ m#text/html#i"
-</IfModule>
-
-#
-
 # # MEDIA TYPES AND CHARACTER ENCODINGS
 
 #
@@ -254,7 +222,9 @@ Options -MultiViews
 
     AddType audio/mp4                                   f4a f4b m4a
     AddType audio/ogg                                   oga ogg opus
+    AddType image/avif                                  avif avifs
     AddType image/bmp                                   bmp
+    AddType image/jxl                                   jxl
     AddType image/svg+xml                               svg svgz
     AddType image/webp                                  webp
     AddType video/mp4                                   f4v f4p m4v mp4
@@ -449,23 +419,23 @@ AddDefaultCharset utf-8
 
 # https://tools.ietf.org/html/draft-ietf-acme-acme-12
 
-# <IfModule mod_rewrite.c>
+<IfModule mod_rewrite.c>
 
-# RewriteEngine On
+RewriteEngine On
 
-# RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTPS} !=on
 
 # # (1)
 
-# # RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/
 
-# # RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[\w-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[\w-]+$
 
-# # RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
 
-# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
-# </IfModule>
+</IfModule>
 
 # ----------------------------------------------------------------------
 
@@ -631,9 +601,7 @@ AddDefaultCharset utf-8
 
 # of your website's pages, this has the potential downside that it forbids even
 
-# non-malicious framing of your content (e.g.: when users visit your website
-
-# using a Google Image Search results page).
+# non-malicious framing of your content.
 
 #
 
@@ -655,16 +623,24 @@ AddDefaultCharset utf-8
 
 #
 
-# https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
+# (!) The `Content-Security-Policy` header has a `frame-ancestors` directive
+
+# which obsoletes this header for supporting browsers.
+
+#
 
 # https://tools.ietf.org/html/rfc7034
 
-# https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/
+# https://owasp.org/www-project-secure-headers/#x-frame-options
 
-# https://www.owasp.org/index.php/Clickjacking
+# https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
+
+# https://docs.microsoft.com/archive/blogs/ieinternals/combating-clickjacking-with-x-frame-options
 
 <IfModule mod_headers.c>
-    Header always set X-Frame-Options "DENY" "expr=%{CONTENT_TYPE} =~ m#text/html#i"
+
+Header always set X-Frame-Options "DENY" "expr=%{CONTENT_TYPE} =~ m#text/html#i"
+
 </IfModule>
 
 # ----------------------------------------------------------------------
@@ -679,7 +655,7 @@ AddDefaultCharset utf-8
 
 #
 
-# This can be done by setting a `Content Security Policy` which whitelists
+# This can be done by setting a Content Security Policy which permits
 
 # trusted sources of content for your website.
 
@@ -751,13 +727,27 @@ AddDefaultCharset utf-8
 
 #
 
-# Browsers that support the CSP header will ignore `X-Frame-Options` if
+# Browsers that support the CSP header should ignore `X-Frame-Options` if
 
 # `frame-ancestors` is also specified.
 
 #
 
-# (5) Forces the browser to treat all the resources that are served over HTTP
+# (5) Elements controlled by `object-src` are perhaps coincidentally
+
+# considered legacy HTML elements and are not receiving new standardized
+
+# features (such as the security attributes `sandbox` or `allow` for
+
+# `<iframe>`).
+
+# Therefore it is recommended to restrict this fetch-directive (e.g.,
+
+# explicitly set `object-src 'none'` if possible).
+
+#
+
+# (6) Forces the browser to treat all the resources that are served over HTTP
 
 # as if they were loaded securely over HTTPS by setting the
 
@@ -775,7 +765,7 @@ AddDefaultCharset utf-8
 
 #
 
-# (6) The `Content-Security-Policy` header is included in all responses
+# (7) The `Content-Security-Policy` header is included in all responses
 
 # that are able to execute scripting. This includes the commonly used
 
@@ -805,19 +795,27 @@ AddDefaultCharset utf-8
 
 #
 
-# https://csp.withgoogle.com/docs/
+# https://www.w3.org/TR/CSP/
+
+# https://owasp.org/www-project-secure-headers/#content-security-policy
 
 # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy
 
-# https://www.html5rocks.com/en/tutorials/security/content-security-policy/
+# https://developers.google.com/web/fundamentals/security/csp
 
-# https://www.w3.org/TR/CSP/
+# https://content-security-policy.com/
 
 <IfModule mod_headers.c>
-    #                                   (1)                 (2)              (3)                 (4)                     (5)                         (6)
-    Header always set Content-Security-Policy "default-src 'self'; connect-src 'self' https://ssl.gstatic.com https://eu.umami.is https://www.google-analytics.com;
-    script-src-elem 'self' 'nonce-8IBTHwOdqNKAWeKl7plt8g' https://cdn.jsdelivr.net https://eu.umami.is; script-src  'self' 'nonce-8IBTHwOdqNKAWeKl7plt8g' https://cdn.jsdelivr.net https://eu.umami.is; style-src-elem 'self' https://cdn.jsdelivr.net https://ssl.gstatic.com style-src   'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; style-src-elem 'self' https://cdn.jsdelivr.net https://ssl.gstatic.com https://fonts.gstatic.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;
-     base-uri 'none'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests" "expr=%{CONTENT_TYPE} =~ m#text\/(html|javascript)|application\/pdf|xml#i"
+
+# # (1) (2) (3) (4) (5) (6) (7)
+
+Header always set Content-Security-Policy "default-src 'self'; connect-src 'self' https://ssl.gstatic.com https://eu.umami.is https://www.google-analytics.com;
+style-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net;
+style-src-elem 'self' https://cdn.jsdelivr.net https://ssl.gstatic.com https://fonts.gstatic.com https://fonts.googleapis.com;
+font-src 'self' https://fonts.gstatic.com;
+script-src 'strict-dynamic' 'nonce-8IBTHwOdqNKAWeKl7plt8g';
+script-src-elem 'self' 'nonce-8IBTHwOdqNKAWeKl7plt8g' https://cdn.jsdelivr.net https://eu.umami.is; base-uri 'none'; child-src 'none' ; form-action 'self'; frame-ancestors 'none'; frame-src 'self' ; object-src 'none'; require-trusted-types-for 'script'; block-all-mixed-content; upgrade-insecure-requests" "expr=%{CONTENT_TYPE} =~ m#text\/(html|javascript)|application\/pdf|xml#i"
+
 </IfModule>
 
 # ----------------------------------------------------------------------
@@ -968,18 +966,22 @@ AddDefaultCharset utf-8
 
 # https://tools.ietf.org/html/rfc6797#section-6.1
 
+# https://owasp.org/www-project-secure-headers/#http-strict-transport-security
+
 # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security
 
 # https://www.html5rocks.com/en/tutorials/security/transport-layer-security/
 
-# https://blogs.msdn.microsoft.com/ieinternals/2014/08/18/strict-transport-security/
-
 # https://hstspreload.org/
 
 <IfModule mod_headers.c>
-    #Header always set Strict-Transport-Security "max-age=16070400; includeSubDomains" "expr=%{HTTPS} == 'on'"
-    # (1) Enable your site for HSTS preload inclusion.
-    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" "expr=%{HTTPS} == 'on'"
+
+# Header always set Strict-Transport-Security "max-age=16070400; includeSubDomains" "expr=%{HTTPS} == 'on'"
+
+# # (1) Enable your site for HSTS preload inclusion.
+
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" "expr=%{HTTPS} == 'on'"
+
 </IfModule>
 
 # ----------------------------------------------------------------------
@@ -1002,6 +1004,8 @@ AddDefaultCharset utf-8
 
 #
 
+# https://owasp.org/www-project-secure-headers/#x-content-type-options
+
 # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options
 
 # https://blogs.msdn.microsoft.com/ie/2008/07/02/ie8-security-part-v-comprehensive-protection/
@@ -1010,81 +1014,6 @@ AddDefaultCharset utf-8
 
 <IfModule mod_headers.c>
     Header always set X-Content-Type-Options "nosniff"
-</IfModule>
-
-# ----------------------------------------------------------------------
-
-# | Cross-Site Scripting (XSS) Protection |
-
-# ----------------------------------------------------------------------
-
-# Protect website reflected Cross-Site Scripting (XSS) attacks.
-
-#
-
-# (1) Try to re-enable the cross-site scripting (XSS) filter built into most
-
-# web browsers.
-
-#
-
-# The filter is usually enabled by default, but in some cases, it may be
-
-# disabled by the user. However, in Internet Explorer, for example, it can be
-
-# re-enabled just by sending the `X-XSS-Protection` header with the value
-
-# of `1`.
-
-#
-
-# (2) Prevent web browsers from rendering the web page if a potential reflected
-
-# (a.k.a non-persistent) XSS attack is detected by the filter.
-
-#
-
-# By default, if the filter is enabled and browsers detect a reflected XSS
-
-# attack, they will attempt to block the attack by making the smallest
-
-# possible modifications to the returned web page.
-
-#
-
-# Unfortunately, in some browsers (e.g.: Internet Explorer), this default
-
-# behavior may allow the XSS filter to be exploited. Therefore, it's better
-
-# to inform browsers to prevent the rendering of the page altogether,
-
-# instead of attempting to modify it.
-
-#
-
-# https://hackademix.net/2009/11/21/ies-xss-filter-creates-xss-vulnerabilities
-
-#
-
-# (!) Do not rely on the XSS filter to prevent XSS attacks! Ensure that you are
-
-# taking all possible measures to prevent XSS attacks, the most obvious
-
-# being: validating and sanitizing your website's inputs.
-
-#
-
-# https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection
-
-# https://blogs.msdn.microsoft.com/ie/2008/07/02/ie8-security-part-iv-the-xss-filter/
-
-# https://blogs.msdn.microsoft.com/ieinternals/2011/01/31/controlling-the-xss-filter/
-
-# https://www.owasp.org/index.php/Cross-site_Scripting_%28XSS%29
-
-<IfModule mod_headers.c>
-    #                           (1)    (2)
-    Header always set X-XSS-Protection "1; mode=block" "expr=%{CONTENT_TYPE} =~ m#text/html#i"
 </IfModule>
 
 # ----------------------------------------------------------------------
@@ -1123,13 +1052,150 @@ AddDefaultCharset utf-8
 
 #
 
-# https://scotthelme.co.uk/a-new-security-header-referrer-policy/
+# https://www.w3.org/TR/referrer-policy/
+
+# https://owasp.org/www-project-secure-headers/#referrer-policy
 
 # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
 
+# https://scotthelme.co.uk/a-new-security-header-referrer-policy/
+
 <IfModule mod_headers.c>
-    #                                                             (1)
-    Header always set Referrer-Policy "strict-origin-when-cross-origin" "expr=%{CONTENT_TYPE} =~ m#text\/(css|html|javascript)|application\/pdf|xml#i"
+
+# # (1)
+
+Header always set Referrer-Policy "no-referrer-when-downgrade" "expr=%{CONTENT_TYPE} =~ m#text\/(css|html|javascript)|application\/pdf|xml#i"
+
+</IfModule>
+
+# ----------------------------------------------------------------------
+
+# | Cross Origin Policy |
+
+# ----------------------------------------------------------------------
+
+# Set strict a Cross Origin Policy to mitigate information leakage.
+
+#
+
+# (1) Cross-Origin-Embedder-Policy prevents a document from loading any
+
+# cross-origin resources that don’t explicitly grant the document
+
+# permission.
+
+# https://html.spec.whatwg.org/multipage/origin.html#coep
+
+# https://owasp.org/www-project-secure-headers/#cross-origin-embedder-policy
+
+# https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy
+
+#
+
+# (2) Cross-Origin-Opener-Policy allows you to ensure a top-level document does
+
+# not share a browsing context group with cross-origin documents.
+
+# https://html.spec.whatwg.org/multipage/origin.html#cross-origin-opener-policies
+
+# https://owasp.org/www-project-secure-headers/#cross-origin-opener-policy
+
+# https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Opener-Policy
+
+#
+
+# (3) Cross-Origin-Resource-Policy allows to define a policy that lets web
+
+# sites and applications opt in to protection against certain requests from
+
+# other origins, to mitigate speculative side-channel attacks.
+
+# https://fetch.spec.whatwg.org/#cross-origin-resource-policy-header
+
+# https://owasp.org/www-project-secure-headers/#cross-origin-resource-policy
+
+# https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cross-Origin-Resource-Policy
+
+# https://resourcepolicy.fyi/
+
+#
+
+# To check your Cross Origin Policy, you can use an online service, such as:
+
+# https://securityheaders.com/
+
+# https://observatory.mozilla.org/
+
+#
+
+# https://web.dev/coop-coep/
+
+# https://web.dev/why-coop-coep/
+
+# https://web.dev/cross-origin-isolation-guide/
+
+# https://scotthelme.co.uk/coop-and-coep/
+
+<IfModule mod_headers.c>
+
+# # (1)
+
+Header always set Cross-Origin-Embedder-Policy "require-corp" "expr=%{CONTENT_TYPE} =~ m#text\/(html|javascript)|application\/pdf|xml#i"
+
+# # (2)
+
+Header always set Cross-Origin-Opener-Policy "same-origin" "expr=%{CONTENT_TYPE} =~ m#text\/(html|javascript)|application\/pdf|xml#i"
+
+# # (3)
+
+Header always set Cross-Origin-Resource-Policy "same-origin" "expr=%{CONTENT_TYPE} =~ m#text\/(html|javascript)|application\/pdf|xml#i"
+
+</IfModule>
+
+# ----------------------------------------------------------------------
+
+# | Permissions Policy |
+
+# ----------------------------------------------------------------------
+
+# Set a strict Permissions Policy to mitigate access to browser features.
+
+#
+
+# The header uses a structured syntax, and allows sites to more tightly
+
+# restrict which origins can be granted access to features.
+
+# The list of available features: https://github.com/w3c/webappsec-permissions-policy/blob/main/features.md
+
+#
+
+# The example policy below aims to disable all features expect synchronous
+
+# `XMLHttpRequest` requests on the same origin.
+
+#
+
+# To check your Permissions Policy, you can use an online service, such as:
+
+# https://securityheaders.com/
+
+# https://observatory.mozilla.org/
+
+#
+
+# https://www.w3.org/TR/permissions-policy-1/
+
+# https://owasp.org/www-project-secure-headers/#permissions-policy
+
+# https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy
+
+# https://scotthelme.co.uk/a-new-security-header-feature-policy/
+
+<IfModule mod_headers.c>
+
+Header always set Permissions-Policy "accelerometer=(),autoplay=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),fullscreen=(self),geolocation=(),gyroscope=(),magnetometer=(),microphone=(),midi=(),payment=(),picture-in-picture=(),publickey-credentials-get=(),screen-wake-lock=(),sync-xhr=(self),usb=(),web-share=(),xr-spatial-tracking=()" "expr=%{CONTENT_TYPE} =~ m#text\/(html|javascript)|application\/pdf|xml#i"
+
 </IfModule>
 
 # ----------------------------------------------------------------------
@@ -1293,6 +1359,7 @@ ServerSignature Off
                                       "image/bmp" \
                                       "image/svg+xml" \
                                       "image/vnd.microsoft.icon" \
+                                      "image/x-icon" \
                                       "text/cache-manifest" \
                                       "text/calendar" \
                                       "text/css" \
@@ -1348,7 +1415,23 @@ ServerSignature Off
 
 #
 
-# Note that some clients (eg. browsers) require a secure connection to request
+# (!) In special case of serving pre-compressed content only, note that
+
+# `DirectoryIndex` directive adjustments could be required to change
+
+# default resources priorities.
+
+# https://httpd.apache.org/docs/current/mod/mod_dir.html#directoryindex
+
+#
+
+# (1) Remove default Content-Language header added for .br files.
+
+# https://httpd.apache.org/docs/current/mod/mod_mime.html#multipleext
+
+#
+
+# Note that some clients (e.g. browsers) require a secure connection to request
 
 # brotli-compressed resources.
 
@@ -1358,7 +1441,7 @@ ServerSignature Off
 
 # https://httpd.apache.org/docs/current/mod/mod_brotli.html#precompressed
 
-# <IfModule mod_headers.c>
+# <IfModule mod_rewrite.c>
 
 # RewriteCond %{HTTP:Accept-Encoding} br
 
@@ -1373,6 +1456,10 @@ ServerSignature Off
 # <FilesMatch "\.br$">
 
 # <IfModule mod_mime.c>
+
+# # (1)
+
+# RemoveLanguage .br
 
 # # Serve correct content types
 
@@ -1400,15 +1487,23 @@ ServerSignature Off
 
 # </IfModule>
 
+# <IfModule mod_headers.c>
+
 # # Force proxies to cache brotlied and non-brotlied files separately
 
 # Header append Vary Accept-Encoding
 
+# </IfModule>
+
 # </FilesMatch>
+
+# <IfModule mod_mime.c>
 
 # # Serve correct encoding type
 
 # AddEncoding br .br
+
+# </IfModule>
 
 # </IfModule>
 
@@ -1430,7 +1525,13 @@ ServerSignature Off
 
 #
 
-# https://httpd.apache.org/docs/current/mod/mod_deflate.html#precompressed
+# (!) In special case of serving pre-compressed content only, note that
+
+# `DirectoryIndex` directive adjustments could be required to change
+
+# default resources priorities.
+
+# https://httpd.apache.org/docs/current/mod/mod_dir.html#directoryindex
 
 #
 
@@ -1444,7 +1545,11 @@ ServerSignature Off
 
 # https://httpd.apache.org/docs/current/mod/mod_mime.html#removetype
 
-# <IfModule mod_headers.c>
+#
+
+# https://httpd.apache.org/docs/current/mod/mod_deflate.html#precompressed
+
+# <IfModule mod_rewrite.c>
 
 # RewriteCond %{HTTP:Accept-Encoding} gzip
 
@@ -1457,8 +1562,6 @@ ServerSignature Off
 # RewriteRule \.gz$ - [E=no-gzip:1]
 
 # <FilesMatch "\.gz$">
-
-# # Serve correct content types
 
 # <IfModule mod_mime.c>
 
@@ -1492,73 +1595,23 @@ ServerSignature Off
 
 # </IfModule>
 
+# <IfModule mod_headers.c>
+
 # # Force proxies to cache gzipped and non-gzipped files separately
 
 # Header append Vary Accept-Encoding
 
+# </IfModule>
+
 # </FilesMatch>
+
+# <IfModule mod_mime.c>
 
 # # Serve correct encoding type
 
 # AddEncoding gzip .gz
 
 # </IfModule>
-
-# ----------------------------------------------------------------------
-
-# | Content transformation |
-
-# ----------------------------------------------------------------------
-
-# Prevent intermediate caches or proxies (such as those used by mobile
-
-# network providers) and browsers data-saving features from modifying
-
-# the website's content using the `cache-control: no-transform` directive.
-
-#
-
-# https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control
-
-# https://tools.ietf.org/html/rfc7234#section-5.2.2.4
-
-#
-
-# (!) Carefully consider the impact on your visitors before disabling
-
-# content transformation. These transformations are performed to
-
-# improve the experience for data- and cost-constrained users
-
-# (e.g. users on a 2G connection).
-
-#
-
-# You can test the effects of content transformation applied by
-
-# Google's Lite Mode by visiting: https://googleweblight.com/i?u=https://www.example.com
-
-#
-
-# https://support.google.com/webmasters/answer/6211428
-
-#
-
-# (!) If you are using `mod_pagespeed`, note that disabling this will
-
-# prevent `PageSpeed` from rewriting HTML files, and, if the
-
-# `ModPagespeedDisableRewriteOnNoTransform` directive isn't set to
-
-# `off`, also from rewriting other resources.
-
-#
-
-# https://developers.google.com/speed/pagespeed/module/configuration#notransform
-
-# <IfModule mod_headers.c>
-
-# Header merge Cache-Control "no-transform"
 
 # </IfModule>
 
@@ -1569,6 +1622,12 @@ ServerSignature Off
 # ----------------------------------------------------------------------
 
 # Remove `ETags` as resources are sent with far-future expires headers.
+
+#
+
+# Apache `ETags` might have an unexpected behavior if `DeflateAlterETag`
+
+# can't be changed (which is the case at `.htaccess` level).
 
 #
 
@@ -1611,98 +1670,224 @@ FileETag None
 <IfModule mod_expires.c>
 
     ExpiresActive on
-    ExpiresDefault                                      "access plus 1 month"
 
-# CSS
+    # Default: Fallback
+    ExpiresDefault                                      "access plus 1 year"
 
-    ExpiresByType text/css                              "access plus 1 year"
+    # Specific: Assets
+    ExpiresByType image/vnd.microsoft.icon              "access plus 1 week"
+    ExpiresByType image/x-icon                          "access plus 1 week"
 
-# Data interchange
+    # Specific: Manifests
+    ExpiresByType application/manifest+json             "access plus 1 week"
+    ExpiresByType application/x-web-app-manifest+json   "access"
+    ExpiresByType text/cache-manifest                   "access"
 
+    # Specific: Data interchange
     ExpiresByType application/atom+xml                  "access plus 1 hour"
     ExpiresByType application/rdf+xml                   "access plus 1 hour"
     ExpiresByType application/rss+xml                   "access plus 1 hour"
 
-    ExpiresByType application/json                      "access plus 0 seconds"
-    ExpiresByType application/ld+json                   "access plus 0 seconds"
-    ExpiresByType application/schema+json               "access plus 0 seconds"
-    ExpiresByType application/geo+json                  "access plus 0 seconds"
-    ExpiresByType application/xml                       "access plus 0 seconds"
-    ExpiresByType text/calendar                         "access plus 0 seconds"
-    ExpiresByType text/xml                              "access plus 0 seconds"
+    # Specific: Documents
+    ExpiresByType text/html                             "access"
+    ExpiresByType text/markdown                         "access"
+    ExpiresByType text/calendar                         "access"
 
-# Favicon (cannot be renamed!) and cursor images
-
-    ExpiresByType image/vnd.microsoft.icon              "access plus 1 week"
-    ExpiresByType image/x-icon                          "access plus 1 week"
-
-# HTML
-
-    ExpiresByType text/html                             "access plus 0 seconds"
-
-# JavaScript
-
-    ExpiresByType application/javascript                "access plus 1 year"
-    ExpiresByType application/x-javascript              "access plus 1 year"
-    ExpiresByType text/javascript                       "access plus 1 year"
-
-# Manifest files
-
-    ExpiresByType application/manifest+json             "access plus 1 week"
-    ExpiresByType application/x-web-app-manifest+json   "access plus 0 seconds"
-    ExpiresByType text/cache-manifest                   "access plus 0 seconds"
-
-# Markdown
-
-    ExpiresByType text/markdown                         "access plus 0 seconds"
-
-# Media files
-
-    ExpiresByType audio/ogg                             "access plus 1 month"
-    ExpiresByType image/apng                            "access plus 1 month"
-    ExpiresByType image/bmp                             "access plus 1 month"
-    ExpiresByType image/gif                             "access plus 1 month"
-    ExpiresByType image/jpeg                            "access plus 1 month"
-    ExpiresByType image/png                             "access plus 1 month"
-    ExpiresByType image/svg+xml                         "access plus 1 month"
-    ExpiresByType image/webp                            "access plus 1 month"
-    ExpiresByType video/mp4                             "access plus 1 month"
-    ExpiresByType video/ogg                             "access plus 1 month"
-    ExpiresByType video/webm                            "access plus 1 month"
-
-# WebAssembly
-
-    ExpiresByType application/wasm                      "access plus 1 year"
-
-# Web fonts
-
-    # Collection
-    ExpiresByType font/collection                       "access plus 1 month"
-
-    # Embedded OpenType (EOT)
-    ExpiresByType application/vnd.ms-fontobject         "access plus 1 month"
-    ExpiresByType font/eot                              "access plus 1 month"
-
-    # OpenType
-    ExpiresByType font/opentype                         "access plus 1 month"
-    ExpiresByType font/otf                              "access plus 1 month"
-
-    # TrueType
-    ExpiresByType application/x-font-ttf                "access plus 1 month"
-    ExpiresByType font/ttf                              "access plus 1 month"
-
-    # Web Open Font Format (WOFF) 1.0
-    ExpiresByType application/font-woff                 "access plus 1 month"
-    ExpiresByType application/x-font-woff               "access plus 1 month"
-    ExpiresByType font/woff                             "access plus 1 month"
-
-    # Web Open Font Format (WOFF) 2.0
-    ExpiresByType application/font-woff2                "access plus 1 month"
-    ExpiresByType font/woff2                            "access plus 1 month"
-
-# Other
-
+    # Specific: Other
     ExpiresByType text/x-cross-domain-policy            "access plus 1 week"
+
+    # Generic: Data
+    ExpiresByType application/json                      "access"
+    ExpiresByType application/ld+json                   "access"
+    ExpiresByType application/schema+json               "access"
+    ExpiresByType application/geo+json                  "access"
+    ExpiresByType application/xml                       "access"
+    ExpiresByType text/xml                              "access"
+
+    # Generic: WebAssembly
+    # ExpiresByType application/wasm                    "access plus 1 year" # default
+
+    # Generic: Assets
+    # ExpiresByType application/javascript              "access plus 1 year" # default
+    # ExpiresByType application/x-javascript            "access plus 1 year" # default
+    # ExpiresByType text/javascript                     "access plus 1 year" # default
+    # ExpiresByType text/css                            "access plus 1 year" # default
+
+    # Generic: Medias
+    # ExpiresByType audio/*                             "access plus 1 year" # default
+    # ExpiresByType image/*                             "access plus 1 year" # default
+    # ExpiresByType video/*                             "access plus 1 year" # default
+    # ExpiresByType font/*                              "access plus 1 year" # default
+
+</IfModule>
+
+# ----------------------------------------------------------------------
+
+# | Cache Control |
+
+# ----------------------------------------------------------------------
+
+# Serve resources with appropriate cache control directives.
+
+#
+
+# The `Cache-Control` header field holds directives (instructions) that control
+
+# caching in browsers and shared caches (e.g. Proxies, CDNs).
+
+# Its use targets web performances improvement by specifying the expected
+
+# client and network caches behaviors.
+
+#
+
+# The usable cache directives are listed here:
+
+# https://www.iana.org/assignments/http-cache-directives/http-cache-directives.xml
+
+#
+
+# The cache directives are documented here:
+
+# https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control#response_directives
+
+#
+
+# (!) Enable and configure this configuration with care.
+
+# Default values should embrace conformance for static files and simple
+
+# apps, but cache control definition at backend level is highly preferred.
+
+# Incorrect directives can lead to data leaks, or can degrade performances.
+
+#
+
+# More specifically, in-depth understanding on `public` vs `private`
+
+# directives meanings is highly recommended. A resource with `public` will
+
+# be cached by shared caches like CDN, even if a user session is active.
+
+#
+
+# (!) The config directive `Header` must be used with the appropriate action.
+
+# Depending on the need, `merge` keeps the current value, if any, of
+
+# `Cache-Control` header, while `set` reset the value including the one
+
+# added by `ExpiresByType` directive in the cache expiration config file
+
+# h5bp/web_performance/cache_expiration.conf.
+
+# https://httpd.apache.org/docs/current/mod/mod_headers.html#header
+
+#
+
+# https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control
+
+# https://www.rfc-editor.org/rfc/rfc9111.html
+
+# https://www.rfc-editor.org/rfc/rfc8246.html
+
+# https://www.rfc-editor.org/rfc/rfc5861.html
+
+# https://www.iana.org/assignments/http-cache-directives/http-cache-directives.xml
+
+# https://cache-tests.fyi/
+
+<IfModule mod_headers.c>
+
+# # Default
+
+Header merge Cache-Control "public, immutable, stale-while-revalidate" "expr=%{resp:Cache-Control} == 'max-age=31536000'"
+
+# # No content
+
+# Header merge Cache-Control "no-store" "expr=-z %{CONTENT_TYPE}"
+
+# # Manifest files
+
+# Header merge Cache-Control "public" "expr=%{CONTENT_TYPE} =~ m#application/manifest\+json#i"
+
+# Header set Cache-Control "no-cache" "expr=%{CONTENT_TYPE} =~ m#text/cache-manifest#i"
+
+# # Assets
+
+# Header merge Cache-Control "public, immutable, stale-while-revalidate" "expr=%{CONTENT_TYPE} =~ m#image/x-icon#i"
+
+# # Data interchange
+
+# Header merge Cache-Control "public, stale-while-revalidate" "expr=%{CONTENT_TYPE} =~ m#application/(atom|rdf|rss)\+xml#i"
+
+# # Documents
+
+# Header set Cache-Control "no-cache, private, must-revalidate" "expr=%{CONTENT_TYPE} =~ m#text/(html|markdown|calendar)#i"
+
+# # Data
+
+# Header set Cache-Control "no-cache" "expr=%{CONTENT_TYPE} =~ m#json|xml#i && %{CONTENT_TYPE} !~ m#/(atom|rdf|rss|manifest|svg)\+#i"
+
+</IfModule>
+
+# ----------------------------------------------------------------------
+
+# | Content transformation |
+
+# ----------------------------------------------------------------------
+
+# Prevent intermediate caches or proxies (such as those used by mobile
+
+# network providers) and browsers data-saving features from modifying
+
+# the website's content using the `no-transform` directive for
+
+# `Cache-Control` header.
+
+#
+
+# https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control
+
+# https://tools.ietf.org/html/rfc7234#section-5.2.2.4
+
+#
+
+# (!) Carefully consider the impact on your visitors before disabling
+
+# content transformation. These transformations are performed to
+
+# improve the experience for data- and cost-constrained users
+
+# (e.g. users on a 2G connection).
+
+#
+
+# You can test the effects of content transformation applied by
+
+# Google's Lite Mode by visiting: https://googleweblight.com/i?u=https://www.example.com
+
+#
+
+# https://support.google.com/webmasters/answer/6211428
+
+#
+
+# (!) If you are using `mod_pagespeed`, note that disabling this will
+
+# prevent `PageSpeed` from rewriting HTML files, and, if the
+
+# `ModPagespeedDisableRewriteOnNoTransform` directive isn't set to
+
+# `off`, also from rewriting other resources.
+
+#
+
+# https://developers.google.com/speed/pagespeed/module/configuration#notransform
+
+<IfModule mod_headers.c>
+
+Header merge Cache-Control "no-transform"
 
 </IfModule>
 
@@ -1776,12 +1961,12 @@ FileETag None
 
 # https://www.stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring/
 
-# <IfModule mod_rewrite.c>
+<IfModule mod_rewrite.c>
 
-# RewriteEngine On
+RewriteEngine On
 
-# RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-f
 
-# RewriteRule ^(.+)\.(\w+)\.(bmp|css|cur|gif|ico|jpe?g|m?js|a?png|svgz?|webp|webmanifest)$ $1.$3 [L]
+RewriteRule ^(.+)\.(\w+)\.(avifs?|bmp|css|cur|gif|ico|jpe?g|jxl|m?js|a?png|svgz?|webp|webmanifest)$ $1.$3 [L]
 
-# </IfModule>
+</IfModule>
