@@ -815,7 +815,9 @@ AddDefaultCharset utf-8
 
 <IfModule mod_headers.c>
     #                                   (1)                 (2)              (3)                 (4)                     (5)                         (6)
-    Header always set Content-Security-Policy "default-src 'self'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests" "expr=%{CONTENT_TYPE} =~ m#text\/(html|javascript)|application\/pdf|xml#i"
+    Header always set Content-Security-Policy "default-src 'self'; connect-src 'self' https://ssl.gstatic.com https://eu.umami.is https://www.google-analytics.com;
+    script-src-elem 'self' 'nonce-8IBTHwOdqNKAWeKl7plt8g' https://cdn.jsdelivr.net https://eu.umami.is; script-src  'self' 'nonce-8IBTHwOdqNKAWeKl7plt8g' https://cdn.jsdelivr.net https://eu.umami.is; style-src-elem 'self' https://cdn.jsdelivr.net https://ssl.gstatic.com style-src   'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; style-src-elem 'self' https://cdn.jsdelivr.net https://ssl.gstatic.com https://fonts.gstatic.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;
+     base-uri 'none'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests" "expr=%{CONTENT_TYPE} =~ m#text\/(html|javascript)|application\/pdf|xml#i"
 </IfModule>
 
 # ----------------------------------------------------------------------
@@ -975,9 +977,9 @@ AddDefaultCharset utf-8
 # https://hstspreload.org/
 
 <IfModule mod_headers.c>
-    Header always set Strict-Transport-Security "max-age=16070400; includeSubDomains" "expr=%{HTTPS} == 'on'"
+    #Header always set Strict-Transport-Security "max-age=16070400; includeSubDomains" "expr=%{HTTPS} == 'on'"
     # (1) Enable your site for HSTS preload inclusion.
-    # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" "expr=%{HTTPS} == 'on'"
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" "expr=%{HTTPS} == 'on'"
 </IfModule>
 
 # ----------------------------------------------------------------------

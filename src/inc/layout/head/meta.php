@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1, maximum-scale=2.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta http-equiv="content-language" content="tr">
   <base target="_top" href="/" />
@@ -17,6 +17,7 @@
   <meta name="robots" content="index, follow, max-snippet:-1, max-video-preview:-1, max-image-preview:-1" />
   <link rel="canonical" href="https://okudumanladim.com/" />
   <meta name="googlebot" content="index, follow" />
+  <meta name="google-analytics" content="G-" />
   <meta name="google-site-verification" content="KEY" />
   <link rel="author" href="humans.txt" />
   <link rel="copyright" href="license.php" />
