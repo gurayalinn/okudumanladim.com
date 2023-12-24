@@ -39,8 +39,8 @@
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
 
-  <?php include_once 'csp.php'; ?>
-  <?php include_once 'og.php'; ?>
-  <?php include_once 'favicon.php'; ?>
-  <?php include_once 'css.php'; ?>
+  <?php require_once 'csp.php'; ?>
+  <?php require_once 'og.php'; ?>
+  <?php require_once 'favicon.php'; ?>
+  <?php require_once 'css.php'; ?>
 </head>
