@@ -509,23 +509,23 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 # https://github.com/h5bp/server-configs-apache/issues/52
 
-<IfModule mod_rewrite.c>
+# <IfModule mod_rewrite.c>
 
-RewriteEngine On
+# RewriteEngine On
 
 # (1)
-RewriteCond %{HTTPS} =on
-RewriteRule ^ - [E=PROTO:https]
-RewriteCond %{HTTPS} !=on
-RewriteRule ^ - [E=PROTO:http]
+# RewriteCond %{HTTPS} =on
+# RewriteRule ^ - [E=PROTO:https]
+# RewriteCond %{HTTPS} !=on
+# RewriteRule ^ - [E=PROTO:http]
 
 # (2)
-RewriteCond %{HTTPS} !=on
+# RewriteCond %{HTTPS} !=on
 
-RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-RewriteRule ^ %{ENV:PROTO}://%1%{REQUEST_URI} [R=301,L]
+# RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+# RewriteRule ^ %{ENV:PROTO}://%1%{REQUEST_URI} [R=301,L]
 
-</IfModule>
+# </IfModule>
 
 # ----------------------------------------------------------------------
 
@@ -587,13 +587,13 @@ RewriteRule ^ - [E=PROTO:http]
 
 # # RewriteCond %{HTTPS} !=on
 
-# RewriteCond %{HTTP_HOST} !^www\. [NC]
+ RewriteCond %{HTTP_HOST} !^www\. [NC]
 
-# RewriteCond %{SERVER_ADDR} !=127.0.0.1
+ RewriteCond %{SERVER_ADDR} !=127.0.0.1
 
-# RewriteCond %{SERVER_ADDR} !=::1
+ RewriteCond %{SERVER_ADDR} !=::1
 
-# RewriteRule ^ %{ENV:PROTO}://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+ RewriteRule ^ %{ENV:PROTO}://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 </IfModule>
 
@@ -844,7 +844,7 @@ Header set X-XSS-Protection "1; mode=block"
 
 # # (1) (2) (3) (4) (5) (6) (7)
 
-Header always set Content-Security-Policy "default-src 'self'; child-src 'none'; base-uri 'none'; form-action 'self'; frame-src 'self'; frame-ancestors 'none'; object-src 'none'; connect-src 'self' https://ssl.gstatic.com https://eu.umami.is https://www.google-analytics.com; style-src 'self' https://cdn.jsdelivr.net https://fonts.googleapis.com; style-src-elem 'self' https://cdn.jsdelivr.net https://ssl.gstatic.com https://fonts.gstatic.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src  'self' 'nonce-8IBTHwOdqNKAWeKl7plt8g'; script-src-elem 'self' 'nonce-8IBTHwOdqNKAWeKl7plt8g' https://cdn.jsdelivr.net https://eu.umami.is; block-all-mixed-content; upgrade-insecure-requests" "expr=%{CONTENT_TYPE} =~ m#text\/(html|javascript)|application\/pdf|xml#i"
+Header always set Content-Security-Policy "default-src 'self'; child-src 'none'; base-uri 'none'; form-action 'self'; frame-src 'self'; frame-ancestors 'none'; object-src 'none'; connect-src 'self' https://ssl.gstatic.com https://eu.umami.is https://www.google-analytics.com; style-src 'self' https://cdn.jsdelivr.net https://fonts.googleapis.com; style-src-elem 'unsafe-inline' https://cdn.jsdelivr.net https://ssl.gstatic.com https://fonts.gstatic.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src  'self' 'nonce-8IBTHwOdqNKAWeKl7plt8g'; script-src-elem 'self' 'nonce-8IBTHwOdqNKAWeKl7plt8g' https://cdn.jsdelivr.net https://eu.umami.is; block-all-mixed-content; upgrade-insecure-requests" "expr=%{CONTENT_TYPE} =~ m#text\/(html|javascript)|application\/pdf|xml#i"
 
 </IfModule>
 

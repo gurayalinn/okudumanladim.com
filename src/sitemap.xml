@@ -5,17 +5,17 @@
   xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
   http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>http://www.okudumanladim.com/</loc>
+    <loc>http://okudumanladim.com/</loc>
     <lastmod>2023-12-24T10:52:28+00:00</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
-  <loc>http://www.okudumanladim.com/policy/privacy/</loc>
+  <loc>http://okudumanladim.com/policy/privacy/</loc>
   <lastmod>2023-11-14T07:00:00+00:00</lastmod>
   <priority>0.80</priority>
   </url>
   <url>
-  <loc>http://www.okudumanladim.com/policy/terms/</loc>
+  <loc>http://okudumanladim.com/policy/terms/</loc>
   <lastmod>2023-11-14T07:00:00+00:00</lastmod>
   <priority>0.80</priority>
   </url>

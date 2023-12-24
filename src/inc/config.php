@@ -18,4 +18,4 @@ $charset = 'UTF8';
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 };
 
-$domain = "https://okudumanladim.com"; // on production
+$domain = "http://okudumanladim.com"; // on production

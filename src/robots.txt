@@ -1,8 +1,8 @@
 User-agent: *
 Allow: /
-Sitemap: https://okudumanladim.com/sitemap.xml
-Sitemap: https://www.okudumanladim.com/sitemap.xml
-Host: https://okudumanladim.com
+Sitemap: http://okudumanladim.com/sitemap.xml
+Sitemap: http://www.okudumanladim.com/sitemap.xml
+Host: http://okudumanladim.com
 Disallow: /license/
 Disallow: /admin/
 Disallow: /vendor/
