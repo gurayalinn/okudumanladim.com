@@ -453,23 +453,23 @@ RewriteBase /
 
 # https://tools.ietf.org/html/draft-ietf-acme-acme-12
 
-<IfModule mod_rewrite.c>
+# <IfModule mod_rewrite.c>
 
-RewriteEngine On
+# RewriteEngine On
 
-RewriteCond %{HTTPS} !=on
+# RewriteCond %{HTTPS} !=on
 
 # # (1)
 
-RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/
+# # RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/
 
-RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[\w-]+$
+# # RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[\w-]+$
 
-RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+# # RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
 
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
-</IfModule>
+# </IfModule>
 
 # ----------------------------------------------------------------------
 
@@ -569,19 +569,19 @@ RewriteRule ^ %{ENV:PROTO}://%1%{REQUEST_URI} [R=301,L]
 
 # subdomains for certain parts of your website.
 
-<IfModule mod_rewrite.c>
+# <IfModule mod_rewrite.c>
 
-RewriteEngine On
+# RewriteEngine On
 
 # # (1)
 
-RewriteCond %{HTTPS} =on
+# RewriteCond %{HTTPS} =on
 
-RewriteRule ^ - [E=PROTO:https]
+# RewriteRule ^ - [E=PROTO:https]
 
-RewriteCond %{HTTPS} !=on
+# RewriteCond %{HTTPS} !=on
 
-RewriteRule ^ - [E=PROTO:http]
+# RewriteRule ^ - [E=PROTO:http]
 
 # # (2)
 
@@ -595,7 +595,7 @@ RewriteRule ^ - [E=PROTO:http]
 
 # RewriteRule ^ %{ENV:PROTO}://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
-</IfModule>
+# </IfModule>
 
 #
 

@@ -4,6 +4,12 @@ Sitemap: https://okudumanladim.com/sitemap.xml
 Sitemap: https://www.okudumanladim.com/sitemap.xml
 Host: https://okudumanladim.com
 Disallow: /license/
+Disallow: /admin/
+Disallow: /vendor/
+Disallow: /public/
+Disallow: /error/
+Disallow: /policy/
+Disallow: /inc/
 Disallow: /*.jpg
 Disallow: /*.png
 Disallow: /*.pdf

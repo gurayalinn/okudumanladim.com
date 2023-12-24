@@ -1,17 +1,4 @@
 <?php require_once('inc/layout/header.php');
-Session::init();
-session_start();
-$user = null;
-$_SESSION['user_id'] = 1;
-?>
-
-<?php
-if (isset($_SESSION['user_id'])) {
-  $user = $con->query("SELECT * FROM users WHERE id = " . $_SESSION['user_id'])->fetch(PDO::FETCH_ASSOC);
-}
-echo "<pre>";
-print_r($user);
-echo "</pre>";
 ?>
 <header>
   <navbar class="navbar">
@@ -19,7 +6,7 @@ echo "</pre>";
       <ol class="breadcrumb">
         <li class="breadcrumb-item active" aria-current="/">HOME</li>
         <li class="breadcrumb-item">
-          <a href="/license.php">LICENSE</a>
+          <a href="/license">LICENSE</a>
         </li>
         &nbsp;
         <li>

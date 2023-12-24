@@ -5,7 +5,7 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">HOME</a></li>
-        <li class="breadcrumb-item active" aria-current="/license.php">
+        <li class="breadcrumb-item active" aria-current="/license">
           LICENSE
         </li>
         &nbsp;

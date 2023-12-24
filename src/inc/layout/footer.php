@@ -25,29 +25,24 @@
         <i><small>
             <a target="_blank" rel="twitter" href="https://twitter.com/gurayalin/">TWITTER</a></i></small>
         <i><small>
-            <a target="_blank" rel="analytics"
-              href="https://analytics.eu.umami.is/share/DbXZOrTNnrfXGrL0/okudumanladim">ANALYTICS</a></i></small>
+            <a target="_blank" rel="analytics" href="/stats">ANALYTICS</a></i></small>
       </social>
       <a target="_self" aria-label="Page Top" tabindex="0" rel="top" id="btn-back-to-top">
         👆
       </a>
     </footer>
     <!-- Scripts -->
-    <script nonce="8IBTHwOdqNKAWeKl7plt8g" src="vendor/js/main.js" defer></script>
-    <script nonce="8IBTHwOdqNKAWeKl7plt8g" src="vendor/js/jquery.min.js"></script>
-    <script nonce="8IBTHwOdqNKAWeKl7plt8g" src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script nonce="8IBTHwOdqNKAWeKl7plt8g" src="vendor/js/disable-devtool.min.js"></script>
+    <script src="vendor/js/main.js" defer></script>
+    <script src="vendor/js/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <?php include 'head/analytics.php'; ?>
     </div>
-    <script nonce="8IBTHwOdqNKAWeKl7plt8g" src="https://cdn.jsdelivr.net/npm/disable-devtool@0.3/disable-devtool.min.js"
-      integrity="sha256-KnQVUMGLEysO9XP4GPx51sCRab5x1Ti5aM6sVRwXitM=" crossorigin="anonymous"></script>
-
-
     <script nonce="8IBTHwOdqNKAWeKl7plt8g" src="https://cdn.jsdelivr.net/npm/jquery@3.7/dist/jquery.min.js"
       integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
     <script nonce="8IBTHwOdqNKAWeKl7plt8g" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3/dist/js/bootstrap.min.js"
       integrity="sha256-YMa+wAM6QkVyz999odX7lPRxkoYAan8suedu4k2Zur8=" crossorigin="anonymous"></script>
+
     <!-- /#wrapper -->
     </body>
 

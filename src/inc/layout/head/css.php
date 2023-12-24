@@ -1,3 +1,10 @@
+<!-- CSS -->
+<link rel="stylesheet" href="vendor/css/sanitize.css" />
+<link rel="stylesheet" href="vendor/css/style.css" media="all" />
+<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" media="all" />
+<link rel="stylesheet" href="vendor/css/print.min.css" media="print" />
+
+
 <!-- FONT -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -10,9 +17,3 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3/dist/css/bootstrap.min.css"
   integrity="sha256-MBffSnbbXwHCuZtgPYiwMQbfE7z+GOZ7fBPCNB06Z98=" crossorigin="anonymous">
-
-<!-- CSS -->
-<link rel="stylesheet" href="vendor/css/sanitize.css" />
-<link rel="stylesheet" href="vendor/css/style.css" media="all" />
-<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" media="all" />
-<link rel="stylesheet" href="vendor/css/print.min.css" media="print" />
