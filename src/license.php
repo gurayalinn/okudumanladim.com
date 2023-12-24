@@ -18,7 +18,7 @@
     </nav>
   </navbar>
 </header>
-
+<main id="main" tabindex="-1">
 <pre>
 Attribution-ShareAlike 4.0 International
 
@@ -448,5 +448,6 @@ public licenses.
 
 Creative Commons may be contacted at creativecommons.org.
 </pre>
+</main>
 
 <?php include_once('inc/layout/footer.php'); ?>

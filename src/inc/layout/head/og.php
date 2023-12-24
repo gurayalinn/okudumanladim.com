@@ -38,7 +38,7 @@
     <meta name="twitter:title" content="okudumanladim.com" />
     <meta name="twitter:description"
       content="Bilgi güvenliği farkındalığı artırmaya yönelik interaktif web uygulaması" />
-    <meta name="twitter:url" content="https://okudumanladim.com/" />
+    <meta name="twitter:url" content="http://okudumanladim.com/" />
     <meta name="twitter:image" content="public/assets/images/favicon.svg" />
     <meta name="twitter:image:alt" content="okudumanladim.com" />
     <meta name="twitter:card" content="summary_large_image" />

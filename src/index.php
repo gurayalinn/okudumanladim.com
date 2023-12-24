@@ -19,7 +19,7 @@
   </navbar>
 </header>
 
-<main id="content">
+<main id="main" tabindex="-1">
   <article>
     <section aria-label="Introduction">
       <h1><i>OKUDUMANLADIM.COM</i></h1>
