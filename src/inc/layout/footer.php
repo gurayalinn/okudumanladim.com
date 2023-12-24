@@ -17,7 +17,7 @@
         </a>
         <a rel="license" class="ccbysa" target="_blank"
           href="http://creativecommons.org/licenses/by-sa/4.0/"><i><small>CC BY-SA 4.0</small></i></a>
-        <i><small><a href="/license.php" rel="license">LICENSE</a></small></i>
+        <i><small><a href="/license" rel="license">LICENSE</a></small></i>
       </license>
       <social>
         <i><small>

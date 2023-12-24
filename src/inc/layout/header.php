@@ -10,7 +10,7 @@ require_once "inc/layout/head/meta.php";
 <body>
   <div id="wrapper" class="wrapper">
     <span itemscope itemtype="https://schema.org/WebSite">
-      <meta itemprop="url" content="https://okudumanladim.com/" />
+      <meta itemprop="url" content="http://okudumanladim.com/" />
       <meta itemprop="name" content="okudumanladim.com" />
     </span>
     <!-- The Header -->

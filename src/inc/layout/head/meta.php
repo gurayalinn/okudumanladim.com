@@ -20,13 +20,12 @@
   <meta name="google-analytics" content="G-" />
   <meta name="google-site-verification" content="KEY" />
   <link rel="author" href="humans.txt" />
-  <link rel="copyright" href="license.php" />
+  <link rel="copyright" href="/license" />
   <link rel="me" href="https://twitter.com/gurayalin" />
   <link rel="me" href="https://www.linkedin.com/in/gurayalin" />
 
   <!-- LANGUAGE -->
-  <link rel="alternate" href="https://www.okudumanladim.com/en/" hreflang="en" />
-  <link rel="alternate" href="https://www.okudumanladim.com/" hreflang="x-default" />
+  <link rel="alternate" href="http://okudumanladim.com/" hreflang="x-default" />
   <!-- MOBILE -->
 
   <meta name="HandheldFriendly" content="true" />

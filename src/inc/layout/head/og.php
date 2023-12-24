@@ -3,15 +3,14 @@
     <meta property="og:description"
       content="Bilgi güvenliği farkındalığı artırmaya yönelik interaktif web uygulaması" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://okudumanladim.com" />
-    <meta property="og:alternate" content="https://okudumanladim.com/" />
+    <meta property="og:url" content="http://okudumanladim.com" />
     <meta property="og:headline" content="okudumanladim.com" />
     <meta property="og:author" content="Güray ALIN" />
     <meta property="og:published_time" content="2024-01-10T08:20:00+03:00" />
     <meta property="og:modified_time" content="2024-01-10T09:20:00+03:00" />
     <meta property="og:updated_time" content="2024-01-10T10:20:00+03:00" />
 
-    <meta property="og:image" content="https://okudumanladim.com/public/assets/images/favicon.svg" />
+    <meta property="og:image" content="http://okudumanladim.com/public/assets/images/favicon.svg" />
     <meta property="og:image:alt" content="okudumanladim.com" />
     <meta property="og:image:width" content="512" />
     <meta property="og:image:height" content="512" />
@@ -25,11 +24,11 @@
   "@type": "WebSite",
   "name": "okudumanladim.com",
   "alternateName": "okudumanladim.com",
-  "url": "https://okudumanladim.com/",
+  "url": "http://okudumanladim.com/",
   "description": "Bilgi güvenliği farkındalığı artırmaya yönelik interaktif web uygulaması.",
   "headline": "okudumanladim.com",
-  "mainEntityOfPage": "https://okudumanladim.com/",
-  "image": "https://okudumanladim.com/public/assets/images/favicon.svg",
+  "mainEntityOfPage": "http://okudumanladim.com/",
+  "image": "http://okudumanladim.com/public/assets/images/favicon.svg",
   "datePublished": "2024-01-10T08:20:00+03:00",
   "dateModified": "2024-01-10T09:20:00+03:00"
 }
