@@ -8,12 +8,12 @@
     <!-- CSP CONFIG -->
     <meta http-equiv="Content-Security-Policy" content="
       default-src 'self' ;
-      connect-src 'self' https://ssl.gstatic.com https://eu.umami.is https://www.google-analytics.com;
+      connect-src 'self' https://ssl.gstatic.com https://eu.umami.is;
       style-src   'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com https://eu.umami.is;
       style-src-elem 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://ssl.gstatic.com https://fonts.gstatic.com https://fonts.googleapis.com;
       font-src    'self' https://fonts.gstatic.com;
-      script-src  'self' 'nonce-8IBTHwOdqNKAWeKl7plt8g';
-      script-src-elem 'self' 'nonce-8IBTHwOdqNKAWeKl7plt8g' https://cdn.jsdelivr.net https://eu.umami.is;
+      script-src-elem 'self' https://cdn.jsdelivr.net https://eu.umami.is;
+      script-src  'self';
       img-src     'self' ;
       frame-src   'self' ;
       media-src   'self' ;

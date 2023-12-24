@@ -1,30 +1,7 @@
 <?php require_once('inc/layout/header.php'); ?>
 
-<header>
-  <navbar class="navbar">
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <a href="/">HOME</a>
-        </li>
-        <li class="breadcrumb-item active" aria-current="/license">
-          <a href="/license">LICENSE</a>
-        </li>
-        <li class="breadcrumb-item">
-          <a href="/project">PROJECT</a>
-        </li>
-        &nbsp;
-        <li>
-          <a tabindex="0" target="_self" rel="top" id="btnSwitch">
-            🌓
-          </a>
-        </li>
-      </ol>
-    </nav>
-  </navbar>
-</header>
-<main id="main" tabindex="-1">
-<pre>
+<main id="content" tabindex="1">
+  <pre>
 Attribution-ShareAlike 4.0 International
 
 =======================================================================
