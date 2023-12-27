@@ -1,0 +1,41 @@
+{
+  "name": "okudumanladim.com",
+  "description": "Kişisel bilgi güvenliği farkındalığının artırılmasına yönelik interaktif web uygulaması",
+  "version": "0.0.1",
+  "license": "Apache-2.0",
+  "private": true,
+  "homepage": "https://okudumanladim.com",
+  "author": {
+    "name": "Güray ALIN",
+    "email": "gurayalinn@gmail.com",
+    "url": "https://github.com/gurayalinn/okudumanladim.com#readme"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gurayalinn/okudumanladim.com.git"
+  },
+  "engines": {
+    "node": ">=20.10.0"
+  },
+  "keywords": [
+    "php",
+    "bootstrap",
+    "javascript",
+    "docker",
+    "apache"
+  ],
+  "tags": [
+    "php",
+    "bootstrap",
+    "javascript",
+    "docker",
+    "apache"
+  ],
+  "scripts": {
+    "start": "make up",
+    "build": "echo \"Error: no build specified\" && exit 1",
+    "dev": "make up",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {}
+}

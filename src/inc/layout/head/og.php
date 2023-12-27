@@ -17,23 +17,6 @@
     <meta property="og:site_name" content="okudumanladim.com" />
     <meta property="og:locale" content="tr_TR" />
     <meta property="og:locale:alternate" content="en_US" />
-    <!-- JSON-LD -->
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "okudumanladim.com",
-  "alternateName": "okudumanladim.com",
-  "url": "http://okudumanladim.com/",
-  "description": "Bilgi güvenliği farkındalığı artırmaya yönelik interaktif web uygulaması.",
-  "headline": "okudumanladim.com",
-  "mainEntityOfPage": "http://okudumanladim.com/",
-  "image": "http://okudumanladim.com/public/assets/images/favicon.svg",
-  "datePublished": "2024-01-10T08:20:00+03:00",
-  "dateModified": "2024-01-10T09:20:00+03:00"
-}
-    </script>
-
     <!-- TWITTER -->
     <meta name="twitter:title" content="okudumanladim.com" />
     <meta name="twitter:description"

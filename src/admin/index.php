@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php require_once('inc/layout/head.php'); ?>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ADMIN PANEL</title>
-</head>
+<?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == true): ?>
+<small><code>LOGGED IN</code></small>
+<?php endif;?>
 
-<body>
-  ADMIN PANEL
+<?php if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] == false): ?>
+<small><code>NOT LOGGED IN</code></small>
+<?php endif;?>
 
-</body>
-
-</html>
+<?php require_once('inc/layout/footer.php'); ?>

@@ -99,7 +99,7 @@
 
 <IfModule mod_headers.c>
     <FilesMatch "\.(eot|otf|tt[cf]|woff2|js|css?)$">
-    SetEnvIf Origin "http(s)?://(www\.)?(google.com|fonts.gstatic.com|cdn.jsdelivr.net|ssl.gstatic.com|fonts.googleapis.com|eu.umami.is)$" AccessControlAllowOrigin=$0
+    SetEnvIf Origin "http(s)?://(www\.)?(google.com|fonts.gstatic.com|cdn.jsdelivr.net|ssl.gstatic.com|fonts.googleapis.com)$" AccessControlAllowOrigin=$0
     Header add Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
     Header merge Vary Origin
     </FilesMatch>
@@ -410,9 +410,18 @@ RewriteBase /
 
     Redirect 301 "/stats" "https://analytics.eu.umami.is/share/DbXZOrTNnrfXGrL0/okudumanladim"
 
+    Redirect 301 "/clickup" "https://sharing.clickup.com/9018008100/l/4-90180070826-1/to-do"
+
+    RedirectMatch 403 ^/vendor/bootstrap/?$
+    RedirectMatch 403 ^/vendor/css/?$
+    RedirectMatch 403 ^/vendor/js/?$
     RedirectMatch 403 ^/vendor/?$
-    RedirectMatch 403 ^/inc/?$
+    RedirectMatch 403 ^/error/?$
     RedirectMatch 403 ^/public/?$
+    RedirectMatch 403 ^/public/assets/?$
+    RedirectMatch 403 ^/public/assets/images/?$
+
+
 
     # Remove trailing slash /
     RewriteCond %{REQUEST_FILENAME} !-d
@@ -844,7 +853,7 @@ Header set X-XSS-Protection "1; mode=block"
 
 # # (1) (2) (3) (4) (5) (6) (7)
 
-Header always set Content-Security-Policy "default-src 'self'; child-src 'none'; base-uri 'none'; form-action 'self'; frame-src 'self'; frame-ancestors 'none'; object-src 'none'; connect-src 'self' https://ssl.gstatic.com https://eu.umami.is; style-src 'self' https://cdn.jsdelivr.net https://fonts.googleapis.com https://fonts.gstatic.com; style-src-elem 'unsafe-inline' https://cdn.jsdelivr.net https://ssl.gstatic.com https://fonts.gstatic.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src  'self'; script-src-elem 'self' https://cdn.jsdelivr.net https://eu.umami.is; block-all-mixed-content; upgrade-insecure-requests" "expr=%{CONTENT_TYPE} =~ m#text\/(html|javascript)|application\/pdf|xml#i"
+Header always set Content-Security-Policy "default-src 'self'; child-src 'none'; base-uri 'none'; img-src * 'self' data: https:; form-action 'self'; frame-src 'self'; frame-ancestors 'none'; object-src 'none'; connect-src 'self' https://ssl.gstatic.com https://eu.umami.is; style-src 'self' https://cdn.jsdelivr.net https://fonts.googleapis.com https://fonts.gstatic.com; style-src-elem 'unsafe-inline' https://cdn.jsdelivr.net https://ssl.gstatic.com https://fonts.gstatic.com; font-src 'self' https://fonts.gstatic.com; script-src  'self' https://cdn.jsdelivr.net; script-src-elem 'self' https://cdn.jsdelivr.net https://eu.umami.is; block-all-mixed-content; upgrade-insecure-requests" "expr=%{CONTENT_TYPE} =~ m#text\/(html|javascript)|application\/pdf|xml#i"
 
 </IfModule>
 

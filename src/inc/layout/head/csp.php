@@ -14,8 +14,8 @@
       font-src    'self' https://fonts.gstatic.com;
       script-src-elem 'self' https://cdn.jsdelivr.net https://eu.umami.is;
       script-src  'self';
-      img-src     'self' ;
-      frame-src   'self' ;
+      img-src * 'self' data: https:;
+      frame-src   'self' https://sharing.clickup.com https://analytics.eu.umami.is;
       media-src   'self' ;
       object-src  'none' ;
       form-action 'self' ;
@@ -25,5 +25,5 @@
       block-all-mixed-content;
       " />
 
-    <link rel="preconnect" href="https://eu.umami.is" crossorigin />
-    <link rel="dns-prefetch" href="https://eu.umami.is" />
+    <!-- <link rel="preconnect" href="https://eu.umami.is" crossorigin />
+    <link rel="dns-prefetch" href="https://eu.umami.is" /> -->

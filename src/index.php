@@ -1,6 +1,6 @@
-<?php require_once('inc/layout/header.php'); ?>
+<?php require_once('inc/layout/head.php'); ?>
 
-<main id="content" tabindex="1">
+<main id="content">
   <article>
     <section aria-label="Introduction">
       <h1><i>OKUDUMANLADIM.COM</i></h1>
@@ -11,6 +11,7 @@
         ve dijital okuryazarlık konularında farkındalık yaratılarak web tabanlı yazılım
         platformunda senaryolar oluşturulmasını ve bu konuda araştırma çalışmalarını içerecektir.
         Siber güvenlik alanı kapsamında gizlilik, güvenlik, dijital mahremiyet
+
         ve dijital okuryazarlık alanında farkındalık ve araştırma projesi.
         Tüm bu konuları ortak paydada buluşturup web projesi ile kullanıcılara
         çevrimiçi anket soruları sorup verilen cevaplara göre gereken önerileri sağlamak

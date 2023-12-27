@@ -1,7 +1,7 @@
-<?php require_once('inc/layout/header.php'); ?>
+<?php require_once('inc/layout/head.php'); ?>
 
-<main id="content" tabindex="1">
-  <article>
+<div class="container-fluid">
+  <main id="content">
     <section aria-label="Introduction">
       <h1><i>OKUDUMANLADIM.COM</i></h1>
       <p>Kişisel bilgi güvenliği farkındalığının artırılmasına yönelik interaktif web platformu.</p>
@@ -41,7 +41,8 @@
         kolaylaştırmak.
         <br /> - Dijital okuryazarlığın ve bilinçli dijital tüketimin sağlanması.
         <br /> - Çevrimiçi ortamlarda gizlilik, güvenlik ve mahremiyetin artırılması adına farkındalık oluşturmak.
-        <br /> - Kullanıcı sözleşmeleri, gizlilik sözleşmeleri ve dijital lisansların farkındalığını artırıp okunmasını
+        <br /> - Kullanıcı sözleşmeleri, gizlilik sözleşmeleri ve dijital lisansların farkındalığını artırıp
+        okunmasını
         sağlamak.
         <br /> - KVKK ve GDPR gibi sözleşmelerin kişisel verilere etkisinin farkındalığını oluşturmak.
       </p>
@@ -63,7 +64,7 @@
         <br /> - Bilinçli çevrimiçi kullanıcı sayısında gözlemlenebilir artış.
       </p>
     </section>
-  </article>
-</main>
-
+    </article>
+  </main>
+</div>
 <?php include('inc/layout/footer.php'); ?>

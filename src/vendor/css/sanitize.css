@@ -11,6 +11,7 @@
 ::after {
   box-sizing: border-box; /* 1 */
   background-repeat: no-repeat; /* 2 */
+  scrollbar-width: none;
 }
 
 /**
@@ -608,4 +609,11 @@ pre {
     /* Linux/OpenOffice fallback */ 'Liberation Mono', /* fallback */ monospace,
     /* macOS emoji */ 'Apple Color Emoji', /* Windows emoji */ 'Segoe UI Emoji',
     /* Windows emoji */ 'Segoe UI Symbol', /* Linux emoji */ 'Noto Color Emoji';
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+#element {
 }
