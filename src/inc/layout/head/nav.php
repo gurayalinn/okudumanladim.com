@@ -60,7 +60,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link link-secondary dropdown-toggle fw-semibold fs-5 font-monospace" href="#"
                   role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  ADMIN
+                  PANEL
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark">
                   <?php if (isset($_SESSION['user'])) : ?>

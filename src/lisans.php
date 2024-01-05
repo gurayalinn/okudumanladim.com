@@ -29,9 +29,9 @@ $title = "LİSANS | okudumanladim.com";
       KOŞULLARI</button>
   </li>
 </ul>
-<div class="tab-content">
+<div class="tab-content lead">
   <div class="tab-pane active" id="first" role="tabpanel" aria-labelledby="first-tab" tabindex="-1">
-    <div class="p-2">
+    <div class="container p-2">
       <div>
         <h1><span>Creative Commons Yasal Kod</span></h1>
         <div>

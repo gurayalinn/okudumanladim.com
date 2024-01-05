@@ -612,8 +612,5 @@ pre {
 }
 
 ::-webkit-scrollbar {
-    display: none;
-}
-
-#element {
+  display: none;
 }

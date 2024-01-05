@@ -121,6 +121,8 @@ if (window.location.pathname === '/') {
     $('#onay').click(function () {
       if ($(this).is(':checked')) {
         document.cookie = 'onay=true; max-age=86400; path=/anket'
+        document.cookie = 'onay=false; max-age=0; path=/'
+
         $('#anketbtn').removeAttr('disabled')
         $('#anketbtn').addClass('btn-info')
       } else {
@@ -135,11 +137,32 @@ if (window.location.pathname === '/anket') {
   document.addEventListener('DOMContentLoaded', function () {
     $('#submitAnket').click(function () {
       document.cookie = 'sonuc=true; max-age=86400; path=/sonuc'
+      document.cookie = 'sonuc=false; max-age=0; path=/'
       window.location.href = '/sonuc'
     })
     if (document.cookie.indexOf('onay=true') == -1) {
+      document.cookie = 'onay=false; max-age=86400; path=/'
       window.location.href = '/'
-      alert('Lütfen önce lisans ve kullanıcı koşullarını onaylayınız.')
+    }
+  })
+}
+
+if (window.location.pathname === '/') {
+  document.addEventListener('DOMContentLoaded', function () {
+    if (document.cookie.indexOf('onay=false') == -1) {
+      $('#onayAlert').attr('hidden')
+    } else {
+      if (!$('#onayAlert').is(':visible')) {
+        $('#onayAlert').removeAttr('hidden')
+      }
+    }
+
+    if (document.cookie.indexOf('sonuc=false') == -1) {
+      $('#sonucAlert').attr('hidden')
+    } else {
+      if (!$('#sonucAlert').is(':visible')) {
+        $('#sonucAlert').removeAttr('hidden')
+      }
     }
   })
 }
@@ -147,8 +170,8 @@ if (window.location.pathname === '/anket') {
 if (window.location.pathname === '/sonuc') {
   document.addEventListener('DOMContentLoaded', function () {
     if (document.cookie.indexOf('sonuc=true') == -1) {
+      document.cookie = 'sonuc=false; max-age=86400; path=/'
       window.location.href = '/'
-      alert('Lütfen önce anketi doldurunuz.')
     }
   })
 }

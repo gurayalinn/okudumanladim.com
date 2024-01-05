@@ -233,10 +233,48 @@ main {
   min-height: 100vh;
   max-width: 100%;
   margin: 10% auto;
-  margin-bottom: 5vh;
+  margin-bottom: 4vh;
+  margin-top: 8vh;
   overflow: auto;
   text-align: auto;
   border-radius: 1vh;
   border: 1px solid var(--bs-tertiary-color);
   box-shadow: 0 0 0.2em var(--bs-tertiary-color);
+}
+
+:where(nav > .nav-link:active, nav > .nav-link:focus, nav > .nav-link:hover) {
+  background-color: var(--bs-body-color) !important;
+  border-radius: 0.2em;
+  color: var(--bs-body-bg) !important;
+  text-decoration: underline !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+:where(
+    .in-link:active,
+    .in-link:focus,
+    .in-link:hover,
+    .out-link:active,
+    .out-link:focus,
+    .out-link:hover
+  ) {
+  background-color: var(--bs-body-color) !important;
+  border-radius: 0.2em;
+  color: var(--bs-body-bg) !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+#anketbtn:hover,
+#anketbtn:active,
+#anketbtn:focus {
+  text-decoration: underline !important;
+  transition: all 0.5s ease-in-out !important;
+}
+
+#anketbtn1:hover,
+#anketbtn1:active,
+#anketbtn1:focus {
+  text-decoration: underline !important;
+  transition: all 0.5s ease-in-out !important;
 }

@@ -33,7 +33,7 @@
       <a data-umami-event="ClickUpPanel" class="out-link" target="_blank" rel="clickup"
         href="/clickup">CLICKUP</a></span>
     <span>
-      <a class="out-link fs-3" target="_self" aria-label="Page Top" tabindex="0" rel="top" id="btn-back-to-top">
+      <a class="fs-3" target="_self" aria-label="Page Top" tabindex="0" rel="top" id="btn-back-to-top">
         👆
       </a>
     </span>

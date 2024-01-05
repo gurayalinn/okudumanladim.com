@@ -25,15 +25,21 @@ if (isset($_POST['anket'])) {
     <div class="col">
       <h1 class="display-1">Anket Sonuçları</h1>
       <hr>
-      <h1 class="lead">
-        Anketi <span class="fw-bold text-info"><?php echo $anket; ?></span> puan ile tamamladınız.
-      </h1>
+
+      <div class="alert alert-info" role="alert">
+        <h4 class="alert-heading">Tebrikler!</h4>
+        <p style="color: var(--bs-body-color) !important;">Anketi <span class="fw-bold text-info"
+            class="fw-bold"><?php echo $anket; ?></span>
+          puan
+          ile tamamladınız.</p>
+      </div>
+
     </div>
   </div>
 
   <div class="row mt-4">
     <div class="col">
-      <h1 class="display-3 fw-semibold fs-3 text-white h3">Puan Aralıkları</h1>
+      <h3 style="color: var(--bs-body-color);" class="display-3 fw-semibold fs-3 h3">Puan Aralıkları</h3>
       <p class="lead">
         <strong class="text-danger fw-bold">
           0-10</strong> arası puan alan kullanıcılar <span class="fw-bold">Bilgi Güvenliği</span> konusunda <span
@@ -55,10 +61,11 @@ if (isset($_POST['anket'])) {
     </div>
 
     <div class="table-responsive mt-4">
-      <table class="table table-sm caption-top table-bordered table-hover table-dark table-striped">
-        <caption id="umami" data-umami-event="users" class="display-3 fw-semibold fs-3 text-white h3">
-          Kullanıcı
-          Puanları
+      <table class="table table-sm caption-top table-bordered table-hover table-striped">
+        <caption id="umami" data-umami-event="users">
+          <h3 style="color: var(--bs-body-color);" class="display-3 fw-semibold fs-3 h3">
+            Kullanıcı
+            Puanları</h3>
         </caption>
         <thead>
           <tr>
