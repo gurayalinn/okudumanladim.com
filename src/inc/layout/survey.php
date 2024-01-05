@@ -1,54 +1,45 @@
+<?php
+$description = "okudumanladim.com, kişisel bilgi güvenliği farkındalığının artırılmasına yönelik interaktif web
+platformu.";
+$keywords = "Siber Güvenlik, Bilgi Güvenliği, Siber Tehditler, Ağ Güvenliği, Veri Koruma, Kötü Amaçlı Yazılımlar,
+Şifreleme, Güvenlik Duvarı, Kimlik Doğrulama, Sızma Testi";
+$title = "SURVEY | okudumanladim.com";
+?>
+
+
+<?php require_once('inc/layout/head.php'); ?>
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
-* {
-  padding: 0;
+.wrapper2 {
   margin: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif
-}
-
-body {
-  background: #fff;
-}
-
-.wrapper {
-  max-width: 600px;
-  margin: 80px auto 50px;
-  padding: 30px;
-  border-radius: 20px;
-  background: #c0e2df;
-  position: relative;
-  min-height: 400px;
-  overflow: hidden
-}
-
-.wrapper .wrap {
-  width: 500px;
+  padding: 10%;
+  border-radius: 5vh;
   position: absolute;
-  left: 50px;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+.wrapper2 .wrap {
+  width: auto;
+  position: absolute;
+  left: 5vw;
   transition: 0.6s
 }
 
-#q2,
-#q3 {
-  left: 650px
-}
-
-.h4 {
-  margin: 0
+.wrapper2 .wrap:nth-child(2) {
+  left: 50%
 }
 
 label {
   display: block;
-  margin-bottom: 15px;
+  margin-bottom: 2vh;
   font-size: 1.2rem;
   cursor: pointer
 }
 
 .options {
   position: relative;
-  padding-left: 30px
+  padding-left: 2vw;
 }
 
 .options input {
@@ -57,12 +48,12 @@ label {
 
 .checkmark {
   position: absolute;
-  top: 4px;
-  left: 3px;
-  height: 20px;
-  width: 20px;
-  background-color: #c0e2df;
-  border: 2px solid #444;
+  top: 1.5vh;
+  left: 0;
+  height: 2vh;
+  width: 1vw;
+  background-color: var(--bs-body-bg);
+  border: 2px solid var(--bs-body-color);
   border-radius: 50%
 }
 
@@ -71,11 +62,9 @@ label {
 }
 
 .options .checkmark:after {
-  content: "";
-  width: 9px;
-  height: 9px;
+  width: 1vw;
+  height: 2vh;
   display: block;
-  background: white;
   position: absolute;
   top: 51%;
   left: 51%;
@@ -85,8 +74,8 @@ label {
 }
 
 .options input[type="radio"]:checked~.checkmark {
-  background: #590995;
-  border: 2px solid #590995;
+  background: var(--bs-body-color);
+  border: 2px solid var(--bs-body-bg);
   transition: 300ms ease-in-out 0s
 }
 
@@ -94,121 +83,38 @@ label {
   transform: translate(-50%, -50%) scale(1)
 }
 
-.btn.btn-primary {
-  background-color: rgb(63, 139, 139);
-  border: 1px solid rgb(63, 139, 139)
-}
-
-.btn {
-  background-color: inherit;
-  border: 1px solid rgb(63, 139, 139);
-  border-radius: 20%;
-  padding: 0.5em;
-}
-
-.btn:focus {
-  box-shadow: none
-}
-
-.btn:hover {
-  background-color: teal;
-  color: #fff
-}
 
 .fa-arrow-right,
 .fa-arrow-left {
   transition: 0.2s ease-in all
 }
 
-.btn.btn-primary:hover .fa-arrow-right {
-  transform: translate(8px)
+.btn.btn-info:hover .fa-arrow-right {
+  transform: translate(1vw)
 }
 
-.btn.btn-primary:hover .fa-arrow-left {
-  transform: translate(-8px)
+.btn.btn-info:hover .fa-arrow-left {
+  transform: translate(1vw)
 }
 
 @media(max-width: 767px) {
-  .wrapper {
-    margin: 30px 10px;
-    height: 420px
+  .wrapper2 {
+    margin: 5% auto;
+    height: 50vh
   }
 
-  .wrapper .wrap {
-    width: 280px;
-    left: 15px
+  .wrapper2 .wrap {
+    width: 20%;
+    left: 1vw;
   }
-}
-
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 28px;
-  background-color: inherit
-}
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 20px;
-  width: 20px;
-  left: 4px;
-  bottom: 4px;
-  background-color: #590995;
-  -webkit-transition: .4s;
-  transition: .4s
-}
-
-input:checked+.slider {
-  background-color: #000
-}
-
-input:focus+.slider {
-  box-shadow: 0 0 1px #2196F3
-}
-
-input:checked+.slider:before {
-  transform: translateX(30px);
-  background-color: #fff
-}
-
-.slider.round {
-  border-radius: 34px
-}
-
-.slider.round:before {
-  border-radius: 50%
-}
-
-.dark-theme {
-  background-color: #222
 }
 </style>
 
 
 
-<div class="wrapper">
+<div class="wrapper2">
   <div class="wrap" id="q1">
-    <div class="text-center pb-4">
+    <div class="text-center pb-8">
       <div class="h5 font-weight-bold"><span id="number"> </span>1 > 3</div>
     </div>
     <div class="h4 font-weight-bold"> 1. ORNEK SORU ?</div>
@@ -220,7 +126,7 @@ input:checked+.slider:before {
             class="checkmark"></span> </label> <label class="options">SECENEK - 4<input type="radio" name="radio">
           <span class="checkmark"></span> </label> </form>
     </div>
-    <div class="d-flex justify-content-end pt-2"> <button class="btn btn-primary" id="next1">ILERI ></button>
+    <div class="d-flex justify-content-end pt-2"> <button class="btn btn-info" id="next1">ILERI ></button>
     </div>
   </div>
   <div class="wrap" id="q2">
@@ -237,9 +143,9 @@ input:checked+.slider:before {
           <span class="checkmark"></span> </label> </form>
     </div>
 
-    <div class="d-flex justify-content-end pt-2"> <button class="btn btn-primary mx-3" id="back1">
+    <div class="d-flex justify-content-end pt-2"> <button class="btn btn-info mx-3" id="back1">
         < GERI</button>
-          <button class="btn btn-primary" id="next2">ILERI ><span class="fas fa-arrow-right"></span> </button>
+          <button class="btn btn-info" id="next2">ILERI ><span class="fas fa-arrow-right">X</span> </button>
     </div>
   </div>
   <div class="wrap" id="q3">
@@ -255,17 +161,11 @@ input:checked+.slider:before {
             class="checkmark"></span> </label> <label class="options">SECENEK - 4<input type="radio" name="radio">
           <span class="checkmark"></span> </label> </form>
     </div>
-    <div class="d-flex justify-content-end pt-2"> <button class="btn btn-primary mx-3" id="back2"> <span
-          class="fas fa-arrow-left pr-2"></span>
-        < GERI</button> <button class="btn btn-primary" id="next3">ONAYLA
+    <div class="d-flex justify-content-end pt-2"> <button class="btn btn-info mx-3" id="back2"><span
+          class="fas fa-arrow-left">X</span>
+        < GERI</button> <button class="btn btn-info" id="next3">ONAYLA
           </button> </div>
   </div>
-  <!-- </div>
-<div class="d-flex flex-column align-items-center">
-  <div class="h3 font-weight-bold text-white">Go Dark</div> <label class="switch"> <input type="checkbox"> <span
-      class="slider round"></span> </label>
-</div> -->
-
 
   <script>
   var q1 = document.getElementById("q1");
@@ -280,38 +180,38 @@ input:checked+.slider:before {
     let query = window.matchMedia("(max-width: 767px)");
     if (query.matches) {
       next1.onclick = function() {
-        q1.style.left = "-650px";
-        q2.style.left = "15px";
+        q1.style.left = "-50%";
+        q2.style.left = "1vw";
       }
       back1.onclick = function() {
-        q1.style.left = "15px";
-        q2.style.left = "650px";
+        q1.style.left = "1vw";
+        q2.style.left = "50%";
       }
       back2.onclick = function() {
-        q2.style.left = "15px";
-        q3.style.left = "650px";
+        q2.style.left = "1vw";
+        q3.style.left = "50%";
       }
       next2.onclick = function() {
-        q2.style.left = "-650px";
-        q3.style.left = "15px";
+        q2.style.left = "-50%";
+        q3.style.left = "1vw";
       }
     } else {
       next1.onclick = function() {
-        q1.style.left = "-650px";
-        q2.style.left = "50px";
+        q1.style.left = "-50%";
+        q2.style.left = "3vw";
       }
       back1.onclick = function() {
-        q1.style.left = "50px";
-        q2.style.left = "650px";
+        q1.style.left = "3vw";
+        q2.style.left = "50%";
       }
       back2.onclick = function() {
-        q2.style.left = "50px";
-        q3.style.left = "650px";
+        q2.style.left = "3vw";
+        q3.style.left = "50%";
       }
       next2.onclick = function() {
-        q2.style.left = "-650px";
+        q2.style.left = "50%";
         q3.
-        style.left = "50px";
+        style.left = "3vw";
       }
     }
   });
@@ -321,12 +221,6 @@ input:checked+.slider:before {
     var rad = document.getElementById('rd')
     rad.removeAttribute('checked')
   }
-  // document.addEventListener('DOMContentLoaded', function() {
-  //   const main = document.querySelector('body')
-  //   const toggleSwitch = document.querySelector('.slider')
-
-  //   toggleSwitch.addEventListener('click', () => {
-  //     main.classList.toggle('dark-theme')
-  //   })
-  // })
   </script>
+
+  <?php require_once('inc/layout/footer.php'); ?>

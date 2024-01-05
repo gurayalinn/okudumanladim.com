@@ -1,19 +1,19 @@
 #!/usr/bin/make -f
 
-.PHONY: up
+.PHONY: all
 
 # Docker
 IMAGE_NAME = php-apache
 
-docker:
-		dcdown \
-		vprune \
-		dstop \
-		crune \
-		nprune \
-		bprune
+all:
+		$(MAKE) down \
+		$(MAKE) stop \
+		$(MAKE) cprune \
+		$(MAKE) nprune \
+		$(MAKE) vprune \
+		$(MAKE) bprune
 
-dstop:
+stop:
 		docker ps -q | awk '{print $1}' | xargs -o docker stop
 
 down:

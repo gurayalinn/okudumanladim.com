@@ -35,6 +35,7 @@ Homestead.json
 
 # production
 /build
+/panel
 
 # misc
 .DS_Store

@@ -36,10 +36,10 @@ function getSecureRandomToken() {
  */
 function clearAuthCookie() {
 
-	unset($_COOKIE['series_id']);
-	unset($_COOKIE['remember_token']);
-	setcookie('series_id', null, -1, '/');
-	setcookie('remember_token', null, -1, '/');
+	unset($_COOKIE['uid']);
+	unset($_COOKIE['remember_me']);
+	setcookie('uid', null, -1, '/');
+	setcookie('remember_me', null, -1, '/');
 }
 /**
  *
@@ -120,4 +120,11 @@ function paginationLinks($current_page, $total_pages, $base_url) {
 function xss_clean($string){
     return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
 
+}
+
+function debug_console($data) {
+    $output = $data;
+    if (is_array($output))
+        $output = implode(',', $output);
+    echo ("<script>console.log('PHP DEBUG : " . json_encode($output) . "');</script>");
 }

@@ -18,23 +18,25 @@
           class="d-inline-block align-text-top">
       </a>
       <a class="nav-link mobile hidden tablet hidden fw-semibold fs-5 font-monospace"
-        style="color: var(--bs-body-color);" href="/survey">SURVEY</a>
-      <a class="nav-link mobile onyl tablet only fw-semibold fs-5 font-monospace" style="color: var(--bs-body-color);"
-        href="/survey">SURVEY</a>
+        style="color: var(--bs-body-color);" href="/anket">ANKET</a>
+      <a class="nav-link mobile only tablet only fw-semibold fs-5 font-monospace" style="color: var(--bs-body-color);"
+        href="/anket">ANKET</a>
       <a class="nav-link mobile hidden tablet hidden fw-semibold fs-5 font-monospace"
-        style="color: var(--bs-body-color);" href="/project">PROJECT</a>
+        style="color: var(--bs-body-color);" href="/proje">PROJE</a>
       <a class="nav-link mobile hidden tablet hidden fw-semibold fs-5 font-monospace"
-        style="color: var(--bs-body-color);" href="/license">LICENSE</a>
+        style="color: var(--bs-body-color);" href="/lisans">LISANS</a>
       <div class="bd-theme-text" style="text-decoration: none;" class="fs-4" tabindex="0" id="btnSwitch">
         🌞
       </div>
       <div class="mobile only tablet only">
 
-        <button style="background-color: var(--bs-tertiary-bg);"
-          class="navbar-toggler d-xxl-none btn btn-light d-flex justify-content-center align-items-center" type="button"
+        <button data-umami-event="MobileMenu"
+          style="background-color: var(--bs-tertiary-bg); border: 1px solid var(--bs-body-color);"
+          class="d-xxl-none navbar-toggler btn btn-light d-flex justify-content-center align-items-center" type="button"
           data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
           aria-label="Toggle navigation">
-          <span style="color: var(--bs-body-color);" class="fs-3 fw-semibold link-info"> &Xi; </span>
+          <span style="color: var(--bs-body-color);" class="fs-3 fw-semibold link-info">
+            &Xi; </span>
         </button>
         <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
           aria-labelledby="offcanvasDarkNavbarLabel">
@@ -47,27 +49,33 @@
           <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-2">
               <li class="nav-item">
-                <a class="nav-link link-info fw-semibold fs-5 font-monospace" href="/survey">SURVEY</a>
+                <a class="nav-link link-info fw-semibold fs-5 font-monospace" href="/anket">ANKET</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link fw-semibold fs-5 font-monospace" href="/project">PROJECT</a>
+                <a class="nav-link link-white fw-semibold fs-5 font-monospace" href="/proje">PROJE</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link fw-semibold fs-5 font-monospace" href="/license">LICENSE</a>
+                <a class="nav-link link-white fw-semibold fs-5 font-monospace" href="/lisans">LISANS</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link link-primary dropdown-toggle fw-semibold fs-5 font-monospace" href="#" role="button"
-                  data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link link-secondary dropdown-toggle fw-semibold fs-5 font-monospace" href="#"
+                  role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   ADMIN
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item link-success fw-semibold fs-5 font-monospace" href="/policy">LOGIN</a>
+                  <?php if (isset($_SESSION['user'])) : ?>
+                  <li><a class="dropdown-item link-primary fw-semibold fs-5 font-monospace"
+                      href="/admin/dash/index.php">DASHBOARD</a>
                   </li>
-                  <li>
+                  <li><a class="dropdown-item link-danger fw-semibold fs-5 font-monospace"
+                      href="/admin/logout.php">LOGOUT</a>
                   </li>
-                  <div class="dropdown-divider"></div>
-                  <li><a class="dropdown-item link-danger fw-semibold fs-5 font-monospace" href="/license">LOGOUT</a>
+                  <?php else : ?>
+                  <li><a data-umami-event="AdminLogin"
+                      class="dropdown-item link-success fw-semibold fs-5 font-monospace"
+                      href="/admin/login.php">LOGIN</a>
                   </li>
+                  <?php endif; ?>
                 </ul>
               </li>
             </ul>

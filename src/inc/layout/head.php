@@ -1,10 +1,8 @@
 <?php
-if (!isset($_SESSION)) {
-session_start();
-}
-require_once "inc/load.php";
-
+require_once "inc/config/load.php";
 require_once "inc/layout/head/meta.php";
+require_once "inc/layout/head/alert.php";
+
 ?>
 
 <body>
@@ -12,10 +10,9 @@ require_once "inc/layout/head/meta.php";
   <a class="skip-main" href="#main">Skip to main ⏩</a>
 
   <!-- The Wrapper -->
-  <div class="wrapper container container-center">
+  <div class="wrapper container">
     <?php require_once "inc/layout/head/nav.php";?>
     <!-- The End of the Header -->
-    <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == true): ?>
-    <?php endif;?>
-    <?php if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] == false): ?>
-    <?php endif;?>
+
+    <!-- The Main -->
+    <main class="container-fluid main" id="content">

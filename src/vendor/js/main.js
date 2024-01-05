@@ -70,75 +70,85 @@ document.addEventListener('DOMContentLoaded', function () {
   })
 })
 
-// const umami = (function () {
-//   umami.trackEvent = function (type, data) {
-//     if (typeof umamiTracker !== 'undefined') {
-//       umamiTracker.trackEvent(type, data)
-//     }
-//   }
-//   return umami
-// })(umami || {})
-
-// umami.trackEvent('pageview', {
-//   event_category: 'pageview',
-//   event_action: 'pageview',
-//   event_label: window.location.href
-// })
-
-// // UMAMI EVENT TRACKING
-// document.addEventListener('DOMContentLoaded', function () {
-//   document.querySelectorAll('a').forEach((link) => {
-//     link.addEventListener('click', (event) => {
-//       if (link.href.startsWith(window.location.origin)) {
-//         umami.trackEvent('click', {
-//           event_category: 'internal_link',
-//           event_action: 'click',
-//           event_label: link.href
-//         })
+// ONLY /login PAGE scripts
+// if (window.location.pathname === '/login') {
+//   document.addEventListener('DOMContentLoaded', function () {
+//     const loginForm = document.getElementById('loginForm')
+//     loginForm.addEventListener('submit', (event) => {
+//       event.preventDefault()
+//       if (loginForm.checkValidity() === false) {
+//         event.stopPropagation()
 //       } else {
-//         umami.trackEvent('click', {
-//           event_category: 'external_link',
-//           event_action: 'click',
-//           event_label: link.href
-//         })
+//         loginForm.classList.add('was-validated')
+//         loginForm.submit()
 //       }
 //     })
 //   })
-// })
+// }
+if (window.location.pathname === '/lisans') {
+  document.addEventListener('DOMContentLoaded', function () {
+    const tabEl = document.querySelector('button[data-bs-toggle="tab"]')
+    tabEl.addEventListener('shown.bs.tab', (event) => {
+      event.target // newly activated tab
+      event.relatedTarget // previous active tab
+    })
+    const bsTab = new bootstrap.Tab('#tab')
+    bsTab.show()
+    const triggerTabList = document.querySelectorAll('#tab button')
+    triggerTabList.forEach((triggerEl) => {
+      const tabTrigger = new bootstrap.Tab(triggerEl)
 
-// // UMAMI EVENT TRACKING
-// document.addEventListener('DOMContentLoaded', function () {
-//   document.querySelectorAll('button').forEach((button) => {
-//     button.addEventListener('click', (event) => {
-//       umami.trackEvent('click', {
-//         event_category: 'button',
-//         event_action: 'click',
-//         event_label: button.innerText
-//       })
-//     })
-//   })
-// })
+      triggerEl.addEventListener('click', (event) => {
+        event.preventDefault()
+        tabTrigger.show()
+      })
+    })
 
-// // UMAMI EVENT TRACKING
+    const triggerEl = document.querySelector(
+      '#tab button[data-bs-target="#second"]'
+    )
+    bootstrap.Tab.getInstance(triggerEl).show() // Select tab by name
 
-// document.querySelectorAll('select').forEach((select) => {
-//   select.addEventListener('change', (event) => {
-//     umami.trackEvent('change', {
-//       event_category: 'select',
-//       event_action: 'change',
-//       event_label: select.innerText
-//     })
-//   })
-// })
+    const triggerFirstTabEl = document.querySelector(
+      '#tab li:first-child button'
+    )
+    bootstrap.Tab.getInstance(triggerFirstTabEl).show() // Select first tab
+  })
+}
 
-// // UMAMI EVENT TRACKING
+if (window.location.pathname === '/') {
+  document.addEventListener('DOMContentLoaded', function () {
+    $('#onay').click(function () {
+      if ($(this).is(':checked')) {
+        document.cookie = 'onay=true; max-age=86400; path=/anket'
+        $('#anketbtn').removeAttr('disabled')
+        $('#anketbtn').addClass('btn-info')
+      } else {
+        $('#anketbtn').attr('disabled', 'disabled')
+        $('#anketbtn').removeClass('btn-info')
+      }
+    })
+  })
+}
 
-// document.querySelectorAll('form').forEach((form) => {
-//   form.addEventListener('submit', (event) => {
-//     umami.trackEvent('submit', {
-//       event_category: 'form',
-//       event_action: 'submit',
-//       event_label: form.innerText
-//     })
-//   })
-// })
+if (window.location.pathname === '/anket') {
+  document.addEventListener('DOMContentLoaded', function () {
+    $('#submitAnket').click(function () {
+      document.cookie = 'sonuc=true; max-age=86400; path=/sonuc'
+      window.location.href = '/sonuc'
+    })
+    if (document.cookie.indexOf('onay=true') == -1) {
+      window.location.href = '/'
+      alert('Lütfen önce lisans ve kullanıcı koşullarını onaylayınız.')
+    }
+  })
+}
+
+if (window.location.pathname === '/sonuc') {
+  document.addEventListener('DOMContentLoaded', function () {
+    if (document.cookie.indexOf('sonuc=true') == -1) {
+      window.location.href = '/'
+      alert('Lütfen önce anketi doldurunuz.')
+    }
+  })
+}
