@@ -19,6 +19,7 @@ class userController
         $this->username = Session::get('username');
     }
 
+
     public function getNew()
     {
         // Init models

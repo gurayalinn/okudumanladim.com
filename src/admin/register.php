@@ -34,6 +34,7 @@ Util::navbar();
               <input type="text" class="form-control form-control-sm" placeholder="Username" name="username"
                 minlength="3" required>
             </div>
+
             <div class="form-group">
               <input type="password" class="form-control form-control-sm" placeholder="Password" name="password"
                 minlength="4" required>

@@ -2,7 +2,14 @@
 
   <div class="container">
 
-    <a class="navbar-brand" href="<?= (BASE_PATH) ?>"><?= Util::display(SITE_NAME); ?></a>
+    <span>
+      <a class="navbar-brand nav-link" href="<?= (BASE_PATH); ?>" aria-label="Home" title="Home">
+        <img src="/public/assets/images/favicon.svg" alt="okudumanladim.com" width="30" height="auto"
+          class="d-inline-block align-text-top">
+      </a>
+    </span>
+    <a class="navbar-brand fw-semibold fs-5 font-monospace link-info"
+      href="<?= (BASE_PATH) ?>"><?= Util::display(SITE_NAME); ?></a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,13 +27,13 @@
           <a class="nav-link" href="<?= (BASE_PATH); ?>admin/index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?= (BASE_PATH); ?>admin/profile.php">Profile</a>
+          <a class="nav-link" href="<?= (BASE_PATH); ?>admin/profile.php">Account</a>
         </li>
 
         <!-- Check if admin -->
         <?php if (Session::get('admin')) : ?>
         <li class="nav-item">
-          <a class="nav-link" href="<?= (BASE_PATH); ?>admin/dash/index.php">Admin</a>
+          <a class="nav-link" href="<?= (BASE_PATH); ?>admin/dash/index.php">Manage</a>
         </li>
         <?php endif; ?>
 

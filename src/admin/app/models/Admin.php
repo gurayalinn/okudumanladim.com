@@ -11,6 +11,7 @@ class Admin extends Database
         $this->statement->execute();
         return $this->statement->fetchAll();
     }
+
     // Set user admin / non admin
     public function administrator($uid)
     {

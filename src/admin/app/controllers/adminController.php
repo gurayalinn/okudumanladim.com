@@ -17,6 +17,7 @@ class adminController extends Admin
         return $this->UserArray();
     }
 
+
     //
     public function setAdmin($uid)
     {

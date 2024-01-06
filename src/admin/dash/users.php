@@ -31,8 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <?php Util::adminNavbar(); ?>
 
-    <div class="col-12 mt-3 mb-2">
-      <table class="rounded table">
+    <div class="col-12 mt-3 mb-2 table-responsive">
+      <table class="rounded table table-dark table-sm caption-top table-bordered table-hover table-striped">
 
         <thead>
           <tr>
@@ -55,17 +55,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <td class="text-center">
               <?php if ($row->admin == 1) : ?>
-              <i class="fas fa-check-circle"></i>
+
+              <!-- admin icon -->
+              admin 👑
+
               <?php else : ?>
-              <i class="fas fa-times-circle"></i>
+
+              <!-- times icon -->
+              user ♟
+
               <?php endif; ?>
             </td>
 
             <td>
               <form method="POST" action="<?= Util::display($_SERVER['PHP_SELF']); ?>">
                 <button value="<?= Util::display($row->uid); ?>" name="setAdmin" title="Set admin/non admin"
-                  data-toggle="tooltip" data-placement="top" class="btn btn-sm text-white" type="submit">
-                  <i class="fas fa-crown"></i>
+                  data-toggle="tooltip" data-placement="top" class="btn btn-sm text-dark" type="submit">
+
+                  <!-- crown icon -->
+                  <span class="fw-bold text-white">👑 / ♟</span>
+
                 </button>
 
               </form>

@@ -57,27 +57,6 @@
               <li class="nav-item">
                 <a class="nav-link link-white fw-semibold fs-5 font-monospace" href="/lisans">LISANS</a>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link link-secondary dropdown-toggle fw-semibold fs-5 font-monospace" href="#"
-                  role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  PANEL
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <?php if (isset($_SESSION['user'])) : ?>
-                  <li><a class="dropdown-item link-primary fw-semibold fs-5 font-monospace"
-                      href="/admin/dash/index.php">DASHBOARD</a>
-                  </li>
-                  <li><a class="dropdown-item link-danger fw-semibold fs-5 font-monospace"
-                      href="/admin/logout.php">LOGOUT</a>
-                  </li>
-                  <?php else : ?>
-                  <li><a data-umami-event="AdminLogin"
-                      class="dropdown-item link-success fw-semibold fs-5 font-monospace"
-                      href="/admin/login.php">LOGIN</a>
-                  </li>
-                  <?php endif; ?>
-                </ul>
-              </li>
             </ul>
           </div>
         </div>

@@ -1,9 +1,9 @@
     <!-- Bootstrap & JavaScript -->
-    <script src="vendor/js/main.js" defer></script>
-    <script src="vendor/js/theme.js" defer></script>
-    <script src="vendor/js/jquery.min.js"></script>
-    <script src="vendor/js/popper.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+    <script src="public/vendor/js/main.js" defer></script>
+    <script src="public/vendor/js/theme.js" defer></script>
+    <script src="public/vendor/js/jquery.min.js"></script>
+    <script src="public/vendor/js/popper.min.js"></script>
+    <script src="public/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
 
 
     <!-- CDN -->

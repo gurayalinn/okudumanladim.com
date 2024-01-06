@@ -39,25 +39,25 @@ CREATE TABLE IF NOT EXISTS `users` (
   `uid` int(11) NOT NULL AUTO_INCREMENT COMMENT 'User ID',
   `username` varchar(20)  COLLATE  utf8mb4_unicode_ci NOT NULL COMMENT 'User Name',
   `password` varchar(255) NOT NULL COMMENT 'User Password Hash',
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'User Email',
-  `name` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'User Full Name',
-  `joined` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'User at Created',
-  `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'User at Updated',
-  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1:active, 0:passive',
-  `role` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'User: 0, Admin: 1',
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'User Email',
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'User at Created',
+  `updatedAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'User at Updated',
+  `admin` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'User: 0, Admin: 1',
   PRIMARY KEY (`uid`), -- Kullanıcı ID'sinin benzersiz olmasını sağlar
   UNIQUE KEY `username` (`username`), -- Kullanıcı adının benzersiz olmasını sağlar
   UNIQUE KEY `email` (`email`), -- E-posta adresinin benzersiz olmasını sağlar
-  KEY `status` (`status`), -- 1:active, 0:passive
-  KEY `role` (`role`) -- User: 0, Admin: 1
+  KEY `admin` (`admin`) -- User: 0, Admin: 1
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`username`, `password`, `email`, `name`, `role`) VALUES
-  ('admin', '$2a$12$NlzQJU5Y4ayl/xLkrdOqJOwvPqFRWlcmVHLPxOpUm5M/cIGepoqgG','info@okudumanladim.com', 'ADMIN ACCOUNT', 1);
+INSERT INTO `users` (`admin`,`username`, `password`, `email`, `createdAt`) VALUES
+  (1, 'admin', '$2y$10$7wOzYc.AXpXc1nE/b0IqLOsP2w1cK9LZXDUi6hoSyuWBDj3DoBjOK', 'info@okudumanladim.com', '2024-01-01 00:00:00');
+
+INSERT INTO `users` (`admin`,`username`, `password`, `email`, `createdAt`) VALUES
+  (0, 'user', '$2y$10$7wOzYc.AXpXc1nE/b0IqLOsP2w1cK9LZXDUi6hoSyuWBDj3DoBjOK', 'user@okudumanladim.com', '2024-01-01 00:00:00');
 
 --
 -- CHECK TABLE `users`
@@ -78,11 +78,6 @@ CHECK (`email` REGEXP '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
       COLLATE utf8mb4_unicode_ci
       AND LENGTH(`email`) <= 255);
 
--- Şifre bcrypt hash'inin geçerli olmasını sağlar
-ALTER TABLE `users`
-ADD CONSTRAINT `check_password`
-CHECK (`password` REGEXP '^\\$2a\\$\\d\\d\\$[./A-Za-z0-9]{53}$');
-
 -- --------------------------------------------------------
 -- SURVEY TABLES
 -- --------------------------------------------------------
@@ -96,7 +91,6 @@ CREATE TABLE IF NOT EXISTS `survey` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
   `question` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Question',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1:active, 0:passive',
-  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Created',
   `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Updated',
   PRIMARY KEY (`id`),
   UNIQUE KEY `question` (`question`),
@@ -122,4 +116,5 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 -- hash-MD5 : $2y$10$e10adc3949ba59abbe56e057f20f883e : 123456
 -- hash-bcrypt : $2y$10$J7h8nA2Gvj74x4Ug6Trj9uHXt58KY4o5xFw1nUN9zYtxhRb1fr3tG : 123456
+-- hash: $2y$10$7wOzYc.AXpXc1nE/b0IqLOsP2w1cK9LZXDUi6hoSyuWBDj3DoBjOK : admin
 

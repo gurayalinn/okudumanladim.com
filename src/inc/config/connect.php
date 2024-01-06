@@ -35,9 +35,9 @@ else {
   $_ENV["DEV_MODE"] = 'false';
   $driver = "pdo";
   $host = "localhost";
-  $user = "oku1f5anladicom_mysql";
-  $pass = "I+%bi$.O#aMT,rCYWh";
-  $db = "oku1f5anladicom_db";
+  $user = "oku323anladicom_mysql";
+  $pass = "~WjRt2%35qmL1gunE!,PrW&A";
+  $db = "oku323anladicom_db";
   $charset = 'UTF8';
   $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 }

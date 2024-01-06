@@ -16,7 +16,7 @@ class Util
 
     public static function adminNavbar(): void
     {
-        include(SITE_ROOT.'/admin/includes/adminNavbar.inc.php');
+        include(SITE_ROOT.'/dash/includes/adminNavbar.inc.php');
     }
 
     public static function footer(): void
@@ -53,7 +53,7 @@ class Util
         // Prevents logged in users to access login or register
         if (Session::get('login')) {
             if (basename($_SERVER['PHP_SELF']) == 'login.php' || basename($_SERVER['PHP_SELF']) == 'register.php') {
-                Util::redirect('/');
+                Util::redirect('/admin');
             }
         }
     }

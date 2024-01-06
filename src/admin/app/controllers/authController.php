@@ -55,7 +55,7 @@ class authController
         $response = $User->login($username, $password);
         if ($response) {
             Session::createUserSession($response);
-            Util::redirect('/');
+            Util::redirect('/admin');
 
         } else {
             return 'Username/Password is wrong.';

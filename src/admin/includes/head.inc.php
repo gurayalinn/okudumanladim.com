@@ -33,9 +33,9 @@
   <!-- Fontawesome CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5/css/fontawesome.min.css"
     integrity="sha256-jrW0TOWXGlAeWheVTEZLgKugxGBGdbVgOn9FZFmviKE=" crossorigin="anonymous"> <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="<?= (BASE_PATH); ?>vendor/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="<?= (BASE_PATH); ?>public/vendor/bootstrap/css/bootstrap.min.css" />
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="<?= (BASE_PATH); ?>vendor/css/custom.css" />
+  <link rel="stylesheet" href="<?= (BASE_PATH); ?>public/vendor/css/custom.css" />
 
   <title><?= "$title &ndash; ".SITE_NAME; ?></title>
 </head>

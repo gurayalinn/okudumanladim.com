@@ -22,11 +22,13 @@ Util::navbar();
       <div class="card">
         <div class=" card-body row">
           <div class="col-6 text-center">
-            <h3><i class="fas fa-user fa-2x"></i></h3>
+            <h3>
+              <!-- user icon -->♟
+            </h3>
           </div>
           <div class="col-6">
             <h3 class="text-center text-truncate"><?= Util::display($userController->getNew()); ?></h3>
-            <span class="small text-muted text-uppercase">latest user</span>
+            <span class="small text-secondary text-uppercase">latest user</span>
           </div>
         </div>
       </div>
