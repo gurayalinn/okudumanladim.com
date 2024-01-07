@@ -2,14 +2,10 @@
   if (isset($GLOBALS['title'])) {
   echo '
   <title>' . $GLOBALS['title'] . '|okudumanladim.com' . '</title>';
-  } else {
-  if (isset($_SESSION["user"]))
-  { echo "Merhaba" . $_SESSION["user"];
-    '| okudumanladim.com' . '</title>';
-  } else {
+  }  else {
     echo
     '<title>' . 'okudumanladim.com' . '</title>';}
-  }
+
   if (isset($GLOBALS['description'])) {
   echo '
   <meta name="description" content="' . $GLOBALS['description'] . '" />';

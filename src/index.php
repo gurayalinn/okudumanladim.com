@@ -1,4 +1,21 @@
-<?php require_once('inc/layout/head.php'); ?>
+<?php if ($_SERVER['REQUEST_URI'] == '/') : ?>
+<?php
+$description = "okudumanladim.com, kişisel bilgi güvenliği farkındalığının artırılmasına yönelik interaktif web
+platformu.";
+$keywords = "Siber Güvenlik, Bilgi Güvenliği, Siber Tehditler, Ağ Güvenliği, Veri Koruma, Kötü Amaçlı Yazılımlar,
+Şifreleme, Güvenlik Duvarı, Kimlik Doğrulama, Sızma Testi";
+$title = "ANASAYFA | okudumanladim.com";
+?>
+<?php
+include_once './inc/api/require.php';
+include_once './inc/api/controllers/authController.php';
+
+Util::head('ANASAYFA');
+
+?>
+
+<?php endif; ?>
+
 
 
 <section class="mt-4" aria-label="Home">
@@ -94,8 +111,6 @@
   </div>
 </section>
 
-
-
-
-
-<?php require_once('inc/layout/footer.php'); ?>
+<?php if ($_SERVER['REQUEST_URI'] == '/') : ?>
+<?php Util::footer(); ?>
+<?php endif; ?>

@@ -8,7 +8,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta http-equiv="content-language" content="tr">
   <base target="_top" href="/" />
+
   <?php include('inc/layout/head/seo.php'); ?>
+
   <link rel="canonical" href="http://okudumanladim.com/" />
   <meta name="googlebot" content="index, follow" />
   <meta name="google-analytics" content="G-" />

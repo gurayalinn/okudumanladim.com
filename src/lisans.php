@@ -4,10 +4,20 @@ $description = "okudumanladim.com, kişisel bilgi güvenliği farkındalığın�
 platformu.";
 $keywords = "Siber Güvenlik, Bilgi Güvenliği, Siber Tehditler, Ağ Güvenliği, Veri Koruma, Kötü Amaçlı Yazılımlar,
 Şifreleme, Güvenlik Duvarı, Kimlik Doğrulama, Sızma Testi";
-$title = "LİSANS | okudumanladim.com";
+$title = "LISANS | okudumanladim.com";
 ?>
-<?php require_once('inc/layout/head.php'); ?>
+<?php
+include_once './inc/api/require.php';
+include_once './inc/api/controllers/authController.php';
+
+Util::head('LISANS');
+
+?>
+
 <?php endif; ?>
+
+
+
 <div class="lead text-center fs-6 fw-semibold mt-2">
   <p class="mb-4" xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a
       property="dct:title" rel="cc:attributionURL" href="https://okudumanladim.com">okudumanladim.com &copy;</a> Bu
@@ -779,5 +789,5 @@ $title = "LİSANS | okudumanladim.com";
     </div>
 
     <?php if ($_SERVER['REQUEST_URI'] == '/lisans') : ?>
-    <?php include_once('inc/layout/footer.php'); ?>
+    <?php Util::footer(); ?>
     <?php endif; ?>

@@ -1,7 +1,6 @@
 <?php
-require_once "inc/config/load.php";
+require_once "inc/api/require.php";
 require_once "inc/layout/head/meta.php";
-require_once "inc/layout/head/alert.php";
 
 ?>
 
@@ -10,9 +9,9 @@ require_once "inc/layout/head/alert.php";
   <a class="skip-main" href="#main">Skip to main ⏩</a>
 
   <!-- The Wrapper -->
-  <div class="wrapper container">
+  <div class="wrapper container-fluid">
     <?php require_once "inc/layout/head/nav.php";?>
     <!-- The End of the Header -->
 
     <!-- The Main -->
-    <main class="container-fluid main" id="content">
+    <main class="container main clearfix" id="content">

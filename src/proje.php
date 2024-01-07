@@ -1,3 +1,4 @@
+<?php if ($_SERVER['REQUEST_URI'] == '/proje') : ?>
 <?php
 $description = "okudumanladim.com, kişisel bilgi güvenliği farkındalığının artırılmasına yönelik interaktif web
 platformu.";
@@ -5,9 +6,15 @@ $keywords = "Siber Güvenlik, Bilgi Güvenliği, Siber Tehditler, Ağ Güvenliğ
 Şifreleme, Güvenlik Duvarı, Kimlik Doğrulama, Sızma Testi";
 $title = "PROJE | okudumanladim.com";
 ?>
+<?php
+include_once './inc/api/require.php';
+include_once './inc/api/controllers/authController.php';
 
-<?php require_once('inc/layout/head.php'); ?>
+Util::head('PROJE');
 
+?>
+
+<?php endif; ?>
 <article>
   <div class="container mt-2 p-2">
     <section aria-label="Introduction">
@@ -126,4 +133,6 @@ $title = "PROJE | okudumanladim.com";
 
   </div>
 </article>
-<?php include('inc/layout/footer.php'); ?>
+<?php if ($_SERVER['REQUEST_URI'] == '/proje') : ?>
+<?php Util::footer(); ?>
+<?php endif; ?>

@@ -1,7 +1,4 @@
 <?php
-define('BASE_PATH', dirname(dirname(__FILE__)));
-define('CURRENT_PAGE', basename($_SERVER['REQUEST_URI']));
-define('CURRENT_PAGE_ARRAY', explode('/', CURRENT_PAGE));
 
 if($_SERVER['HTTP_HOST'] === 'localhost:'. $_ENV['APACHE_PORT'] && $_SERVER['SERVER_PORT'] === $_ENV['APACHE_PORT']) {
   define('DEV_MODE', true);
@@ -14,7 +11,6 @@ if($_SERVER['HTTP_HOST'] === 'localhost:'. $_ENV['APACHE_PORT'] && $_SERVER['SER
   ini_set('error_log', BASE_PATH . '/logs/php_error.log');
   define('BASE_URL', 'http://localhost:' . $_ENV['APACHE_PORT']);
   define('APP_FOLDER', 'src');
-  $driver = "mysqli";
   $host = $_ENV["MYSQL_HOST"];
   $user = $_ENV["MYSQL_USER"];
   $pass = $_ENV["MYSQL_PASSWORD"];
@@ -33,7 +29,6 @@ else {
   define('APP_FOLDER', 'public_html');
   define('DEV_MODE', false);
   $_ENV["DEV_MODE"] = 'false';
-  $driver = "pdo";
   $host = "localhost";
   $user = "oku323anladicom_mysql";
   $pass = "~WjRt2%35qmL1gunE!,PrW&A";
@@ -43,15 +38,12 @@ else {
 }
 
 
-require_once 'helper.php';
-
 class connect_pdo
 {
   protected $dbh;
   public function __construct()
   {
     try {
-            $driver = $GLOBALS['driver'];
             $host = $GLOBALS['host'];
             $db = $GLOBALS['db'];
             $user = $GLOBALS['user'];
@@ -59,38 +51,7 @@ class connect_pdo
             $charset = $GLOBALS['charset'];
             $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 
-            if ($driver === "mysqli") {
-              $options = mysqli_init();
-              mysqli_options($options, MYSQLI_OPT_CONNECT_TIMEOUT, 5);
-              mysqli_options($options, MYSQLI_INIT_COMMAND, "SET NAMES utf8");
-              mysqli_options($options, MYSQLI_INIT_COMMAND, "SET CHARACTER SET utf8");
-              mysqli_options($options, MYSQLI_INIT_COMMAND, "SET COLLATION_CONNECTION = 'utf8_general_ci'");
-              mysqli_options($options, MYSQLI_INIT_COMMAND, "SET SQL_MODE = NO_AUTO_VALUE_ON_ZERO");
-              mysqli_options($options, MYSQLI_INIT_COMMAND, "SET AUTOCOMMIT = 0");
-              mysqli_options($options, MYSQLI_INIT_COMMAND, "SET time_zone = '+00:00'");
-              mysqli_options($options, MYSQLI_INIT_COMMAND, "SET @@global.max_user_connections = 2");
-              mysqli_options($options, MYSQLI_INIT_COMMAND, "SET @@global.net_read_timeout = 3600");
-              mysqli_options($options, MYSQLI_INIT_COMMAND, "SET @@global.net_write_timeout = 3600");
-              mysqli_options($options, MYSQLI_INIT_COMMAND, "SET @@global.wait_timeout = 3600");
-              mysqli_options($options, MYSQLI_INIT_COMMAND, "SET @@global.connect_timeout = 3600");
-              mysqli_options($options, MYSQLI_OPT_CONNECT_TIMEOUT, 5);
-              $con = new mysqli($host, $user, $pass, $db);
-              if (!$con) {
-                echo "Failed to connect to MySQL: " . mysqli_connect_error();
-                exit();
-              }
-              else {
-                $t_id = mysqli_thread_id($con);
-                if (!$t_id) {
-                echo "Errorcode: " . mysqli_connect_errno() . PHP_EOL;
-                echo "Errormessage: " . mysqli_connect_error() . PHP_EOL;
-                exit();
-              }
-                debug_console("MySQLi successfull connection : " . $t_id);
-                $this->dbh = $con;
-            }
-              return false;
-            } else {
+
             $con = new PDO($dsn, $user, $pass);
             $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $con->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
@@ -113,9 +74,10 @@ class connect_pdo
             $con->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET @@global.wait_timeout = 3600");
             $con->setAttribute(PDO::MYSQL_ATTR_INIT_COMMAND, "SET @@global.connect_timeout = 3600");
             $this->dbh = $con;
+
             }
-            }
-              catch (PDOException $err) {
+
+            catch (PDOException $err) {
             echo "PDOException: ".$err->getCode()."<br/>";
             $err->getMessage() . "<br/>";
             $err->getLine() . "<br/>";

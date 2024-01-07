@@ -6,8 +6,18 @@ $keywords = "Siber Güvenlik, Bilgi Güvenliği, Siber Tehditler, Ağ Güvenliğ
 Şifreleme, Güvenlik Duvarı, Kimlik Doğrulama, Sızma Testi";
 $title = "SONUC | okudumanladim.com";
 ?>
+<?php
+include_once './inc/api/require.php';
+include_once './inc/api/controllers/authController.php';
 
-<?php include_once('inc/layout/head.php'); ?>
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
+    $response = (new authController())->register($_POST);
+}
+
+Util::head('Sonuc');
+
+?>
 
 <?php endif; ?>
 
@@ -104,10 +114,6 @@ if (isset($_POST['anket'])) {
       </table>
     </div>
 
-
-
-
-
     <?php if ($_SERVER['REQUEST_URI'] == '/sonuc') : ?>
-    <?php include_once('inc/layout/footer.php'); ?>
+    <?php Util::footer(); ?>
     <?php endif; ?>

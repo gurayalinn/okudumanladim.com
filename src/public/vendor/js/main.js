@@ -54,7 +54,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // LOADER ANIMATION
 $(window).on('load', function () {
-  $('.loader').delay(300).fadeOut('slow')
+  $('.loader').delay(200).fadeOut('slow')
+  $('.loader').addClass('active')
 })
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -70,21 +71,6 @@ document.addEventListener('DOMContentLoaded', function () {
   })
 })
 
-// ONLY /login PAGE scripts
-// if (window.location.pathname === '/login') {
-//   document.addEventListener('DOMContentLoaded', function () {
-//     const loginForm = document.getElementById('loginForm')
-//     loginForm.addEventListener('submit', (event) => {
-//       event.preventDefault()
-//       if (loginForm.checkValidity() === false) {
-//         event.stopPropagation()
-//       } else {
-//         loginForm.classList.add('was-validated')
-//         loginForm.submit()
-//       }
-//     })
-//   })
-// }
 if (window.location.pathname === '/lisans') {
   document.addEventListener('DOMContentLoaded', function () {
     const tabEl = document.querySelector('button[data-bs-toggle="tab"]')
@@ -135,7 +121,7 @@ if (window.location.pathname === '/') {
 
 if (window.location.pathname === '/anket') {
   document.addEventListener('DOMContentLoaded', function () {
-    $('#submitAnket').click(function () {
+    $('#submit-btn').click(function () {
       document.cookie = 'sonuc=true; max-age=86400; path=/sonuc'
       document.cookie = 'sonuc=false; max-age=0; path=/'
       window.location.href = '/sonuc'

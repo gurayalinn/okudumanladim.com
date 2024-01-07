@@ -229,13 +229,14 @@ a.skip-main:active {
 
 main {
   background-color: var(--bs-tertiary-bg) !important;
+  display: block;
   padding: 2vh;
-  min-height: 100vh;
+  max-height: 100vh;
   max-width: 100%;
   margin: 10% auto;
   margin-bottom: 4vh;
   margin-top: 8vh;
-  overflow: auto;
+  overflow-x: auto;
   text-align: auto;
   border-radius: 1vh;
   border: 1px solid var(--bs-tertiary-color);
@@ -279,7 +280,37 @@ main {
   transition: all 0.5s ease-in-out !important;
 }
 
-
 .no-js {
   display: none !important;
+}
+
+.loader {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  min-height: 100vh;
+  min-width: 100%;
+  overflow: auto;
+  padding: 0%;
+  margin: 0%;
+  opacity: 0.9;
+  background-color: var(--bs-dark);
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.loader img {
+  width: 50%;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  padding: 0%;
+}
+
+.loader.active {
+  display: flex;
 }
