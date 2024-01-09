@@ -14,9 +14,9 @@ Util::isGuest();
 
 $guest = new guestController;
 $questions = $guest->getQuestionsArray();
-$userResult = 0;
-if (isset($_COOKIE['userResult'])) {
-    $userResult = $_COOKIE['userResult'];
+$result = 0;
+if (isset($_COOKIE['result'])) {
+    $result = $_COOKIE['result'];
 }
 
 //$answer = isset($_COOKIE['userAnswers']) ? $_COOKIE['userAnswers'] : null; // Eğer $_COOKIE['userAnswers'] set edilmişse değeri, değilse boş bir dize alır
@@ -77,7 +77,7 @@ Util::head('ANKET | okudumanladim.com');
             <input type="text" class="form-control form-control-md" placeholder="Kullanıcı Adı" name="username"
               minlength="3" aria-label="Username" aria-describedby="basic-addon1" autocomplete="off" required>
             <input type="hidden" name="session" value="<?= Util::randomCode(16); ?>">
-            <input type="hidden" name="result" value="<?= ($userResult); ?>">
+            <input type="hidden" name="result" value="<?= ($result); ?>">
             <!-- <input type="hidden" name="answer" value="<? //htmlspecialchars($_COOKIE['userAnswers']); ?>"> -->
             <div id="submit-container" class=""></div>
             <div id="submit-container" class=""></div>

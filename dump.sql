@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`admin`,`username`, `password`, `email`, `createdAt`) VALUES
-  (1, 'gurayalin', '$2y$10$7wOzYc.AXpXc1nE/b0IqLOsP2w1cK9LZXDUi6hoSyuWBDj3DoBjOK', 'info@okudumanladim.com', '2024-01-01 00:00:00');
+  (1, 'gurayalin', '$2y$10$MAaMTXGHMSfpuxQFGr9DieDGCsWye0UmEU6GV73hUh4fA2Wyrhn6O', 'info@okudumanladim.com', '2024-01-01 00:00:00');
 
 -- --------------------------------------------------------
 -- SURVEY TABLES
@@ -67,14 +67,17 @@ INSERT INTO `guests` (`username`, `email`, `session`, `result`, `createdAt`, `up
 --
 DROP TABLE IF EXISTS `questions`;
 CREATE TABLE IF NOT EXISTS `questions` (
-    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'Soru ID',
+    `id` INT NOT NULL AUTO_INCREMENT COMMENT 'Soru ID',
     `question_text` TEXT NOT NULL COLLATE utf8mb4_unicode_ci COMMENT 'Soru Metni',
     `category` VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci DEFAULT 'Genel' COMMENT 'Kategori',
     `option_a` VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci DEFAULT 'A) Seçenek' COMMENT 'Seçenek A',
     `option_b` VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci DEFAULT 'B) Seçenek' COMMENT 'Seçenek B',
     `option_c` VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci DEFAULT 'C) Seçenek' COMMENT 'Seçenek C',
     `option_d` VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci DEFAULT 'D) Seçenek' COMMENT 'Seçenek D',
-    `correct_answer` VARCHAR(1) NOT NULL DEFAULT 'A' COMMENT 'Doğru Cevap'
+    `correct_answer` VARCHAR(1) NOT NULL DEFAULT 'A' COMMENT 'Doğru Cevap',
+    `createdAt` datetime DEFAULT CURRENT_TIMESTAMP COMMENT 'At Created',
+    `updatedAt` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'At Updated',
+    PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 
@@ -106,4 +109,5 @@ CREATE TABLE IF NOT EXISTS `questions` (
 COMMIT;
 
 -- hash: $2y$10$7wOzYc.AXpXc1nE/b0IqLOsP2w1cK9LZXDUi6hoSyuWBDj3DoBjOK : admin
+-- hash: $2y$10$MAaMTXGHMSfpuxQFGr9DieDGCsWye0UmEU6GV73hUh4fA2Wyrhn6O : u2?ZZ_~]g9!dSkF
 

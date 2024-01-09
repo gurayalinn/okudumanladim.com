@@ -201,7 +201,7 @@ Util::head($title);
             </td>
 
             <td>
-              <a class="link-info fw-bold text-muted" href="/profile?username=<?= Util::display($row->username)?>"
+              <a class="link-info fw-bold" href="/profile?username=<?= Util::display($row->username)?>"
                 role="button">İncele</a>
 
             </td>

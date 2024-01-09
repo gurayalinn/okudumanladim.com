@@ -215,7 +215,7 @@ function showResults() {
   alertHtml += resultMessage
   alertHtml += '</div>'
 
-  setCookie('userResult', correctPercentage, 30)
+  setCookie('result', correctPercentage, 30)
   checkResultVisibility()
   $('#result-container').html(alertHtml)
 }
@@ -370,7 +370,7 @@ $('#submit-btn').click(function () {
 $('#reset-btn').click(function () {
   // LocalStorage'ı temizle
   localStorage.removeItem(localStorageKey)
-  deleteCookie('userResult')
+  deleteCookie('result')
   deleteCookie('userAnswers')
   document.cookie = 'sonuc=true; max-age=0; path=/'
   document.cookie = 'sonuc=true; max-age=0; path=/sonuc'
