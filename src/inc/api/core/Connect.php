@@ -8,7 +8,7 @@ if($_SERVER['HTTP_HOST'] === 'localhost:'. $_ENV['APACHE_PORT'] && $_SERVER['SER
   ini_set('display_startup_errors', 'On');
   ini_set('html_errors', 'On');
   ini_set('log_errors', 'On');
-  ini_set('error_log', BASE_PATH . '/logs/php_error.log');
+  //ini_set('error_log', BASE_PATH . '/logs/php_error.log');
   define('BASE_URL', 'http://localhost:' . $_ENV['APACHE_PORT']);
   define('APP_FOLDER', 'src');
   $host = $_ENV["MYSQL_HOST"];

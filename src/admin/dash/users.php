@@ -8,6 +8,8 @@ Util::isAdmin();
 
 $admin = new adminController;
 $userList = $admin->getUserArray();
+$questions = $admin->getQuestionsArray();
+
 
 Util::head('Admin Panel');
 Util::navbar();
@@ -19,6 +21,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $rowUID = $_POST['setAdmin'];
         $admin->setAdmin($rowUID);
     }
+
+    if (isset($_POST["addQuestion"])) {
+         $questionTxt = $_POST['questionTxt'];
+         $optionA = $_POST['optionA'];
+         $optionB = $_POST['optionB'];
+         $optionC = $_POST['optionC'];
+         $optionD = $_POST['optionD'];
+         $category = $_POST['category'];
+         $correctAnswer = $_POST['correctAnswer'];
+         $admin->addQuestion($questionTxt, $optionA, $optionB, $optionC, $optionD, $category, $correctAnswer);
+        }
+
 
     header("location: users.php");
 

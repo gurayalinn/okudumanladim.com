@@ -124,7 +124,6 @@ if (window.location.pathname === '/anket') {
     $('#submit-btn').click(function () {
       document.cookie = 'sonuc=true; max-age=86400; path=/sonuc'
       document.cookie = 'sonuc=false; max-age=0; path=/'
-      window.location.href = '/sonuc'
     })
     if (document.cookie.indexOf('onay=true') == -1) {
       document.cookie = 'onay=false; max-age=86400; path=/'

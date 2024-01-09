@@ -23,6 +23,26 @@ class Session
         Session::set("createdAt", $user->createdAt);
     }
 
+        public static function createGuestSession($user)
+    {
+        Session::set("login", true);
+        Session::set("session", (string) $user->session);
+        Session::set("username", (string) $user->username);
+        Session::set("result", (int) $user->result);
+        Session::set("uid",(int) $user->uid);
+    }
+
+
+       public static function createRequestSession($user)
+    {
+        Session::set("login", false);
+        Session::set("session", (string) $user->session);
+        Session::set("username", (string) $user->username);
+        Session::set("result", (int) $user->result);
+        Session::set("uid",(int) $user->uid);
+        Session::set("created_at", $user->createdat);
+    }
+
     public static function set(string $key, mixed $val): void
     {
         $_SESSION[$key] = $val;

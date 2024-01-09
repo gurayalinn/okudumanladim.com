@@ -31,6 +31,19 @@ class Util
     return $data;
     }
 
+
+
+    public static function createCookie(string $name, string $value, int $time): void
+    {
+        setcookie($name, $value, time() + $time, '/');
+    }
+
+
+    public static function deleteCookie(string $name): void
+    {
+        setcookie($name, '', time() - 3600, '/');
+    }
+
     public static function randomCode(int $int): string
     {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -48,17 +61,32 @@ class Util
         // If user is logged in
         if (!Session::get('login')) {
             // Prevents infinite redirect loop
-            if (basename($_SERVER['PHP_SELF']) !== 'login.php' && basename($_SERVER['PHP_SELF']) !== 'register.php') {
-                Util::redirect('/admin/login.php');
+            if (basename($_SERVER['PHP_SELF']) !== 'anket.php' && basename($_SERVER['PHP_SELF']) !== 'sonuc.php') {
+                Util::redirect('anket.php');
             }
         }
         // Prevents logged in users to access login or register
         if (Session::get('login')) {
-            if (basename($_SERVER['PHP_SELF']) == 'login.php' || basename($_SERVER['PHP_SELF']) == 'register.php') {
-                Util::redirect('/admin');
+            if (basename($_SERVER['PHP_SELF']) == 'anket.php' || basename($_SERVER['PHP_SELF']) == 'sonuc.php') {
+                Util::redirect('sonuc.php');
             }
         }
     }
+
+
+      public static function isGuest(): void
+    {
+        // If user is logged in
+        if (!Session::get('login')) {
+          Util::debug_console("UtilHelper.php 70: " . 'not logged in ' . $_SERVER['PHP_SELF']);
+            // Prevents infinite redirect loop
+        }
+        // Prevents logged in users to access login or register
+        if (Session::get('login')) {
+          Util::debug_console("UtilHelper.php 78: " .'logged in ' . $_SERVER['PHP_SELF']);
+        }
+    }
+
 
     public static function redirect(string $location): void
     {

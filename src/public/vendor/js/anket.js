@@ -73,7 +73,7 @@ function loadQuestion() {
 
     let isCorrect = selectedAnswer === correctAnswer
     let isChecked = 'checked="checked"'
-    let bgColor = isCorrect ? 'bg-success' : 'bg-danger'
+    let bgColor = isCorrect ? 'bg-success' /* Doğru cevap */ : 'bg-success' // Yanlış cevap
 
     html = html.replace(
       isChecked,
@@ -99,8 +99,8 @@ function loadQuestion() {
   let bgColor =
     userAnswers[currentQuestion] !== undefined
       ? userAnswers[currentQuestion] === question.correct_answer
-        ? 'bg-success'
-        : 'bg-danger'
+        ? 'bg-success' // Doğru cevap
+        : 'bg-success' // Yanlış cevap
       : 'bg-secondary'
   html = html.replace(
     '<div class="card-body">',
@@ -109,12 +109,17 @@ function loadQuestion() {
 
   html += '</div></div>'
   $('#question-container').html(html)
+
+  // Tüm sorular cevaplandıysa question-container'ı gizle
+  if (Object.keys(userAnswers).length === questions.length) {
+    $('#survey-container-quest').hide()
+  }
+
   checkNavButtonVisibility()
 }
 
 function loadPagination() {
-  let html =
-    '<nav aria-label="Page navigation example"><ul class="pagination justify-content-start">'
+  let html = '<nav aria-label="Page navigation example"><ul class="pagination">'
 
   for (let i = 0; i < questions.length; i++) {
     let questionStatus = getQuestionStatus(i)
@@ -123,12 +128,12 @@ function loadPagination() {
       questionStatus === 'correct'
         ? 'bg-success'
         : questionStatus === 'incorrect'
-        ? 'bg-danger'
+        ? 'bg-success'
         : 'bg-secondary'
 
     let textColor = currentQuestion === i ? 'text-light' : 'text-dark' // Seçili olan sorunun rengini siyah yap
     html +=
-      '<li class="page-item ' +
+      '<li class=" page-item ' +
       liClass +
       '"><a class="page-link bg-transparent ' +
       textColor +
@@ -154,6 +159,8 @@ function saveAnswer() {
 
   // Kullanıcı cevaplarını LocalStorage'a kaydet
   localStorage.setItem(localStorageKey, JSON.stringify(userAnswers))
+  setCookie('userAnswers', JSON.stringify(userAnswers), 30)
+
   loadQuestion()
 }
 
@@ -199,29 +206,28 @@ function showResults() {
       '<br> <strong class="fw-semibold text-primary">Başarılı sayılırsınız.</strong>'
   } else {
     resultMessage +=
-      '<br> <strong class="fw-semibold text-warning">Başarısız oldunuz.</strong>'
+      '<br> <strong class="fw-semibold text-danger">Başarısız oldunuz.</strong>'
   }
 
-  let alertClass = correctPercentage >= 80 ? 'success' : 'warning'
+  let alertClass = correctPercentage >= 80 ? 'success' : 'secondary'
 
-  let alertHtml =
-    '<div class="alert alert-' + alertClass + ' mt-3" role="alert">'
+  let alertHtml = '<div class="alert alert-' + alertClass + '" role="alert">'
   alertHtml += resultMessage
   alertHtml += '</div>'
 
-  $('#result-container').html(alertHtml)
   setCookie('userResult', correctPercentage, 30)
+  checkResultVisibility()
+  $('#result-container').html(alertHtml)
 }
 
 function deleteCookie(cname) {
   // Çerezin süresini geçmiş bir tarihle güncelleyerek silme işlemi
   document.cookie = cname + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
 }
-function setCookie(cname, cvalue, exdays) {
+function setCookie(cname, cvalue, exdays, path) {
   let d = new Date()
   d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000)
   let expires = 'expires=' + d.toUTCString()
-
   document.cookie = cname + '=' + cvalue + '; ' + expires
 }
 
@@ -256,6 +262,14 @@ function createOptionButton(value, text) {
   return html
 }
 
+function checkResultVisibility() {
+  if (Object.keys(userAnswers).length !== questions.length) {
+    $('#result-container').hide()
+  } else {
+    $('#result-container').show()
+  }
+}
+
 function checkNavButtonVisibility() {
   // "Gönder" butonunu kontrol et
   if (Object.keys(userAnswers).length !== questions.length) {
@@ -264,13 +278,7 @@ function checkNavButtonVisibility() {
   } else {
     // Tüm sorular cevaplandıysa "Gönder" butonunu etkinleştir
     $('#submit-btn').prop('disabled', false)
-  }
-
-  // Eğer son soruya ulaşıldıysa "Gönder" butonunu göster, değilse gizle
-  if (currentQuestion === questions.length - 1) {
-    $('#submit-btn').show()
-  } else {
-    $('#submit-btn').hide()
+    showResults()
   }
 
   // "Önceki" butonunu kontrol et
@@ -283,13 +291,18 @@ function checkNavButtonVisibility() {
 
   // "Sonraki" butonunu kontrol et
   if (currentQuestion === questions.length - 1) {
-    $('#submit-btn').show() // Eğer son soruya ulaşıldıysa "Gönder" butonunu göster
     $('#next-btn').prop('disabled', true)
   } else {
     $('#next-btn').prop('disabled', false)
     $('#next-btn').show()
+  }
 
-    $('#submit-btn').hide() // Eğer son soruya ulaşılmadıysa "Gönder" butonunu gizle
+  if (Object.keys(userAnswers).length === questions.length) {
+    $('#next-btn').hide()
+    $('#next-btn').prop('disabled', true)
+    $('#prev-btn').prop('disabled', true)
+    $('#prev-btn').hide()
+    $('#user-container').removeAttr('hidden')
   }
 }
 
@@ -322,10 +335,10 @@ $('#pagination-container').on('click', '.pagination li', function () {
 })
 
 $('#button-container').append(
-  '<button class="btn btn-lg p-2 m-2 btn-secondary" id="prev-btn">⬅⬅ Geri</button>'
+  '<button class="btn btn-lg p-2 m-2 btn-secondary" id="prev-btn">⬅ Geri</button>'
 )
 $('#button-container').append(
-  '<button class="btn btn-lg p-2 m-2 btn-secondary" id="next-btn">İleri ➡➡</button>'
+  '<button class="btn btn-lg p-2 m-2 btn-secondary" id="next-btn">İleri ➡</button>'
 )
 
 $('#prev-btn').click(function () {
@@ -343,33 +356,27 @@ $('#question-container').on('change', 'input[name="answer"]', function () {
 $('#pagination-container').on('click', '.pagination li', function () {
   saveAnswer()
 })
-$('#submit-container').append(
-  '<button class="btn-danger btn btn-lg p-2 m-2" id="reset-btn">Sıfırla ❌</button>'
+$('#reset-container').append(
+  '<a class="link-info text-white text-decoration-none" href="/logout"><button class="btn-danger btn btn-md btn-outline-white btn-block" id="reset-btn">Sıfırla ❌</button></a>'
 )
 $('#submit-container').append(
-  '<button class="btn-success btn btn-lg p-2 m-2" data-umami-event="anketBitir" id="submit-btn">Gönder ✔</button>'
+  '<button class="btn-success btn btn-md btn-outline-white btn-block" data-umami-event="anketBitir"  name="register" id="submit-btn">Gönder ✔</button>'
 )
 
 $('#submit-btn').click(function () {
   saveAnswer()
-  showResults()
-  localStorage.removeItem(localStorageKey)
-  localStorage.removeItem('lastQuestionIndex')
-  localStorage.removeItem('userCorrectQuestion')
-  localStorage.removeItem('userAnswers')
 })
 // Sıfırla butonu için event listener ekle
 $('#reset-btn').click(function () {
   // LocalStorage'ı temizle
   localStorage.removeItem(localStorageKey)
   deleteCookie('userResult')
+  deleteCookie('userAnswers')
   document.cookie = 'sonuc=true; max-age=0; path=/'
-  document.cookie = 'sonuc=false; max-age=0; path=/'
   document.cookie = 'sonuc=true; max-age=0; path=/sonuc'
-  document.cookie = 'sonuc=false; max-age=0; path=/sonuc'
   // Kullanıcı cevapları ve arka plan renklerini sıfırla
   userAnswers = {}
-  $('.pagination li').removeClass('bg-success bg-danger bg-primary')
+  $('.pagination li').removeClass('bg-success bg-danger bg-dark')
   $('label.btn').removeClass('btn-success')
 
   loadQuestion()

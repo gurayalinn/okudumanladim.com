@@ -27,17 +27,41 @@ class Validator
         return false;
     }
 
+
+
+    public static function registerFormGuest(
+        string $username,
+    ): string {
+        $validateUsername = self::validateUsername($username);
+        if ($validateUsername) {
+            return (string) $validateUsername;
+        }
+        return false;
+    }
+
+    public static function loginFormGuest(string $username): string|bool
+    {
+        // Validate username
+        $validateUsername = self::validateUsername($username);
+        if ($validateUsername) {
+            return (string) $validateUsername;
+        }
+
+        return false;
+    }
+
+
     private static function validateUsername(string $username): string|bool
     {
         $usernameSchema = "/^[a-zA-Z0-9]*$/";
         if (empty($username)) {
-            $error = "Please enter a username.";
+            $error = "Lütfen bir kullanıcı adı giriniz.";
         } elseif (strlen($username) < 3) {
-            $error = "Username is too short.";
-        } elseif (strlen($username) > 14) {
-            $error = "Username is too long.";
+            $error = "Kullanıcı adı 3 karakterden kısa olamaz.";
+        } elseif (strlen($username) > 20) {
+            $error = "Kullanıcı adı çok uzun.";
         } elseif (!preg_match($usernameSchema, $username)) {
-            $error = "Username must only contain alphanumerical!";
+            $error = "Kullanıcı adı sadece harf ve rakamlardan oluşabilir.";
         }
         return $error ?? false;
     }

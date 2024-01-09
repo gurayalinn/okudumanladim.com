@@ -231,7 +231,7 @@ main {
   background-color: var(--bs-tertiary-bg) !important;
   display: block;
   padding: 2vh;
-  max-height: 100vh;
+  min-height: 100vh;
   max-width: 100%;
   margin: 10% auto;
   margin-bottom: 4vh;
@@ -280,9 +280,9 @@ main {
   transition: all 0.5s ease-in-out !important;
 }
 
-.no-js {
+/* .no-js {
   display: none !important;
-}
+} */
 
 .loader {
   display: none;

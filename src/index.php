@@ -1,4 +1,3 @@
-<?php if ($_SERVER['REQUEST_URI'] == '/') : ?>
 <?php
 $description = "okudumanladim.com, kişisel bilgi güvenliği farkındalığının artırılmasına yönelik interaktif web
 platformu.";
@@ -7,16 +6,13 @@ $keywords = "Siber Güvenlik, Bilgi Güvenliği, Siber Tehditler, Ağ Güvenliğ
 $title = "ANASAYFA | okudumanladim.com";
 ?>
 <?php
-include_once './inc/api/require.php';
-include_once './inc/api/controllers/authController.php';
+include_once 'inc/api/require.php';
+
+include_once 'inc/api/controllers/authController.php';
 
 Util::head('ANASAYFA');
 
 ?>
-
-<?php endif; ?>
-
-
 
 <section class="mt-4" aria-label="Home">
   <div class="container">
@@ -57,7 +53,6 @@ Util::head('ANASAYFA');
     class="btn-lg btn btn-info m-2" data-bs-toggle="modal" data-bs-target="#anketModal" data-bs-whatever="anket">
     Ankete Git >>
   </button>
-
   <div hidden id="onayAlert" class="alert alert-danger alert-dismissible fade show" role="alert">
     <strong>Lütfen!</strong>
     anket için onay veriniz aksi takdirde anketi başlatamazsınız.
@@ -111,6 +106,4 @@ Util::head('ANASAYFA');
   </div>
 </section>
 
-<?php if ($_SERVER['REQUEST_URI'] == '/') : ?>
 <?php Util::footer(); ?>
-<?php endif; ?>

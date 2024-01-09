@@ -17,11 +17,36 @@ class adminController extends Admin
         return $this->UserArray();
     }
 
+     public function getGuestArray()
+    {
+        return $this->guestArray();
+    }
+
+    public function addQuestion ($question_text, $option_a, $option_b, $option_c, $option_d, $category, $correct_answer) {
+        return $this->insertQuestion($question_text, $option_a, $option_b, $option_c, $option_d, $category, $correct_answer);
+    }
+
+    public function getQuestionsArray()
+    {
+        return $this->questionsArray();
+    }
 
     //
     public function setAdmin($uid)
     {
         return $this->administrator($uid);
     }
+
+    public function delQuestion($id)
+    {
+        return $this->deleteQuestion($id);
+    }
+
+        public function delGuest($uid)
+    {
+        return $this->deleteGuest($uid);
+    }
+
+
 
 }
