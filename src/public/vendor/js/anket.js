@@ -373,7 +373,7 @@ $('#reset-btn').click(function () {
   deleteCookie('result')
   deleteCookie('userAnswers')
   document.cookie = 'sonuc=true; max-age=0; path=/'
-  document.cookie = 'sonuc=true; max-age=0; path=/sonuc'
+
   // Kullanıcı cevapları ve arka plan renklerini sıfırla
   userAnswers = {}
   $('.pagination li').removeClass('bg-success bg-danger bg-dark')

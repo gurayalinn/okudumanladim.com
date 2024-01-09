@@ -168,8 +168,6 @@ Util::head($username . ' | okudumanladim.com');
       data-umami-event="<?= $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/sonuc' ?>"
       href="/sonuc"><strong>Tüm Puanları Gör</strong></a></h3>
 
-
-
 </div>
 
 <?php endif; ?>

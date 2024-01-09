@@ -134,7 +134,7 @@ Util::head($title);
             <td class="">
               <?php if ($result === null)
               {
-                $result = "Anketi tamamlamadı.";
+                $result = "-";
               }
               else
               {
