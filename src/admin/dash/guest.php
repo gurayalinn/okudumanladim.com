@@ -123,8 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             <td>
               <button value="<?= Util::display($row->uid); ?>" name="" title="Inspect guest" data-toggle="tooltip"
                 data-placement="top" class="btn btn-sm" type="">
-                <a class="fw-bold fs-4"
-                  href="/sonuc?<?= Util::display($row->username) . '+' . Util::display($row->session) ?>"
+                <a class="fw-bold fs-4" href="/profile?username=<?= Util::display($row->username)?>"
                   role="button">🔎</a>
               </button>
 
