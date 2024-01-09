@@ -102,33 +102,57 @@ if (window.location.pathname === '/lisans') {
   })
 }
 
-if (window.location.pathname === '/') {
-  document.addEventListener('DOMContentLoaded', function () {
-    $('#onay').click(function () {
-      if ($(this).is(':checked')) {
-        document.cookie = 'onay=true; max-age=86400; path=/anket'
-        document.cookie = 'onay=false; max-age=0; path=/'
-
-        $('#anketbtn').removeAttr('disabled')
-        $('#anketbtn').addClass('btn-info')
-      } else {
-        $('#anketbtn').attr('disabled', 'disabled')
-        $('#anketbtn').removeClass('btn-info')
-      }
-    })
-  })
-}
-
 if (window.location.pathname === '/anket') {
   document.addEventListener('DOMContentLoaded', function () {
     $('#submit-btn').click(function () {
       document.cookie = 'sonuc=true; max-age=86400; path=/sonuc'
+      document.cookie = 'sonuc=true; max-age=86400; path=/anket'
+      document.cookie = 'sonuc=true; max-age=86400; path=/'
       document.cookie = 'sonuc=false; max-age=0; path=/'
+      document.cookie = 'sonuc=false; max-age=0; path=/anket'
+      document.cookie = 'sonuc=false; max-age=0; path=/sonuc'
     })
     if (document.cookie.indexOf('onay=true') == -1) {
       document.cookie = 'onay=false; max-age=86400; path=/'
+      document.cookie = 'onay=false; max-age=86400; path=/anket'
+      document.cookie = 'onay=false; max-age=86400; path=/sonuc'
       window.location.href = '/'
     }
+  })
+}
+
+if (window.location.pathname === '/sonuc') {
+  document.addEventListener('DOMContentLoaded', function () {
+    if (document.cookie.indexOf('sonuc=true') == -1) {
+      document.cookie = 'sonuc=false; max-age=86400; path=/'
+      document.cookie = 'sonuc=false; max-age=86400; path=/anket'
+      document.cookie = 'sonuc=false; max-age=86400; path=/sonuc'
+      window.location.href = '/'
+    }
+  })
+}
+
+if (window.location.pathname === '/') {
+  document.addEventListener('DOMContentLoaded', function () {
+    $('#onay').click(function () {
+      if ($(this).is(':checked')) {
+        document.cookie = 'onay=true; max-age=86400; path=/'
+        document.cookie = 'onay=true; max-age=86400; path=/anket'
+        document.cookie = 'onay=true; max-age=86400; path=/sonuc'
+        document.cookie = 'onay=false; max-age=0; path=/'
+        document.cookie = 'onay=false; max-age=0; path=/anket'
+        document.cookie = 'onay=false; max-age=0; path=/sonuc'
+
+        $('#anketbtn').removeAttr('disabled')
+        $('#anketbtn').addClass('btn-info')
+      } else {
+        document.cookie = 'onay=false; max-age=86400; path=/'
+        document.cookie = 'onay=false; max-age=86400; path=/anket'
+        document.cookie = 'onay=false; max-age=86400; path=/sonuc'
+        $('#anketbtn').attr('disabled', 'disabled')
+        $('#anketbtn').removeClass('btn-info')
+      }
+    })
   })
 }
 
@@ -148,15 +172,6 @@ if (window.location.pathname === '/') {
       if (!$('#sonucAlert').is(':visible')) {
         $('#sonucAlert').removeAttr('hidden')
       }
-    }
-  })
-}
-
-if (window.location.pathname === '/sonuc') {
-  document.addEventListener('DOMContentLoaded', function () {
-    if (document.cookie.indexOf('sonuc=true') == -1) {
-      document.cookie = 'sonuc=false; max-age=86400; path=/'
-      window.location.href = '/'
     }
   })
 }

@@ -146,7 +146,7 @@ Util::head($username . ' | okudumanladim.com');
             <td class="">
               <?php if ($result === null)
               {
-                $result = "Anketi tamamlamadı.";
+                $result = "-";
               }
                ?>
               <?= ($result); ?>
