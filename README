@@ -24,8 +24,6 @@ docker-compose up
 
 ---
 
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a>
-
 [website]: https://okudumanladim.com
 [phpmyadmin]: http://localhost:8081
 [dev]: http://localhost:8080
