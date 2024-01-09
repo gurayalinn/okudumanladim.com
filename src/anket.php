@@ -20,7 +20,7 @@ if (isset($_COOKIE['userResult'])) {
 }
 
 //$answer = isset($_COOKIE['userAnswers']) ? $_COOKIE['userAnswers'] : null; // Eğer $_COOKIE['userAnswers'] set edilmişse değeri, değilse boş bir dize alır
-
+$response = null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
     $response = (new authController())->registerGuest($_POST);
@@ -71,7 +71,7 @@ Util::head('ANKET | okudumanladim.com');
 
           <?php endif; ?>
         </div>
-
+        <?php if (!isset($_POST['username']) && empty($_POST['username']) && $response === null || $response !== 'Başarıyla gönderildi.') : ?>
         <form method="POST" action="<?= Util::display($_SERVER['PHP_SELF']); ?>">
           <div class="form-group input-group input-group-md">
             <input type="text" class="form-control form-control-md" placeholder="Kullanıcı Adı" name="username"
@@ -79,10 +79,11 @@ Util::head('ANKET | okudumanladim.com');
             <input type="hidden" name="session" value="<?= Util::randomCode(16); ?>">
             <input type="hidden" name="result" value="<?= ($userResult); ?>">
             <!-- <input type="hidden" name="answer" value="<? //htmlspecialchars($_COOKIE['userAnswers']); ?>"> -->
-
+            <div id="submit-container" class=""></div>
             <div id="submit-container" class=""></div>
           </div>
         </form>
+        <?php endif; ?>
 
 
       </div>

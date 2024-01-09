@@ -5,13 +5,15 @@ class Database
 {
     // PRODUCTION
     protected mixed $statement;
+
+
+
     private string $dbHost = "localhost";
     private string $dbUser = "oku323anladicom_mysql";
     private string $dbPass = "~WjRt2%35qmL1gunE!,PrW&A";
     private string $dbName = "oku323anladicom_db";
 
 
-    // protected mixed $statement;
     // private string $dbHost = "mysql";
     // private string $dbUser = "root";
     // private string $dbPass = "password";

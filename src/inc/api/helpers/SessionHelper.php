@@ -30,6 +30,9 @@ class Session
         Session::set("username", (string) $user->username);
         Session::set("result", (int) $user->result);
         Session::set("uid",(int) $user->uid);
+        Session::set("admin", (bool) $user->admin);
+        Session::set("created_at", $user->createdat);
+
     }
 
 
@@ -41,6 +44,7 @@ class Session
         Session::set("result", (int) $user->result);
         Session::set("uid",(int) $user->uid);
         Session::set("created_at", $user->createdat);
+        Session::set("admin", (bool) $user->admin);
     }
 
     public static function set(string $key, mixed $val): void

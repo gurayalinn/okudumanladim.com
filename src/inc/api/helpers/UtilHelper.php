@@ -78,12 +78,12 @@ class Util
     {
         // If user is logged in
         if (!Session::get('login')) {
-          Util::debug_console("UtilHelper.php 70: " . 'not logged in ' . $_SERVER['PHP_SELF']);
+          //Util::debug_console("UtilHelper.php 70: " . 'not logged in ' . $_SERVER['PHP_SELF']);
             // Prevents infinite redirect loop
         }
         // Prevents logged in users to access login or register
         if (Session::get('login')) {
-          Util::debug_console("UtilHelper.php 78: " .'logged in ' . $_SERVER['PHP_SELF']);
+         // Util::debug_console("UtilHelper.php 78: " .'logged in ' . $_SERVER['PHP_SELF']);
         }
     }
 

@@ -54,6 +54,8 @@ CREATE TABLE IF NOT EXISTS `guests` (
   `updatedAt` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'At Updated',
   `session` varchar(255) DEFAULT NULL COMMENT 'guest Session',
   `result` int(11) DEFAULT '0' COMMENT 'guest Result',
+  `admin` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'User: 0, Admin: 1',
+
   PRIMARY KEY (`uid`)
   ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -66,22 +68,15 @@ INSERT INTO `guests` (`username`, `email`, `session`, `result`, `createdAt`, `up
 DROP TABLE IF EXISTS `questions`;
 CREATE TABLE IF NOT EXISTS `questions` (
     `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT 'Soru ID',
-    `question_text` TEXT NOT NULL COLLATE  utf8mb4_unicode_ci COMMENT 'Soru Metni',
-    `category` VARCHAR(255) NOT NULL DEFAULT COLLATE  utf8mb4_unicode_ci 'Genel' COMMENT 'Kategori',
-    `option_a` VARCHAR(255) NOT NULL DEFAULT COLLATE  utf8mb4_unicode_ci 'A) Seçenek' COMMENT 'Seçenek A',
-    `option_b` VARCHAR(255) NOT NULL DEFAULT COLLATE  utf8mb4_unicode_ci 'B) Seçenek' COMMENT 'Seçenek B',
-    `option_c` VARCHAR(255) NOT NULL DEFAULT COLLATE  utf8mb4_unicode_ci 'C) Seçenek' COMMENT 'Seçenek C',
-    `option_d` VARCHAR(255) NOT NULL DEFAULT COLLATE  utf8mb4_unicode_ci 'D) Seçenek' COMMENT 'Seçenek D',
+    `question_text` TEXT NOT NULL COLLATE utf8mb4_unicode_ci COMMENT 'Soru Metni',
+    `category` VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci DEFAULT 'Genel' COMMENT 'Kategori',
+    `option_a` VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci DEFAULT 'A) Seçenek' COMMENT 'Seçenek A',
+    `option_b` VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci DEFAULT 'B) Seçenek' COMMENT 'Seçenek B',
+    `option_c` VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci DEFAULT 'C) Seçenek' COMMENT 'Seçenek C',
+    `option_d` VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci DEFAULT 'D) Seçenek' COMMENT 'Seçenek D',
     `correct_answer` VARCHAR(1) NOT NULL DEFAULT 'A' COMMENT 'Doğru Cevap'
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci;
 
-
---
--- Dumping data for table `questions`
---
-INSERT INTO `questions` ( `question_text`, `option_a`, `option_b`, `option_c`, `option_d`, `category`, `correct_answer`)
-VALUES
-('Bu bir örnek sorudur?', 'A) Seçenek 1', 'B) Seçenek 2', 'C) Seçenek 3', 'D) Seçenek 4', 'Genel', 'A'),
 
 --
 -- Table structure for table `answer`
@@ -107,8 +102,6 @@ VALUES
 --   (1, 8, 'D'),
 --   (1, 9, 'A'),
 --   (1, 10, 'B');
-
-ALTER DATABASE `oku323anladicom_db` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 COMMIT;
 

@@ -6,6 +6,8 @@ class Database
 // (devolopment) ortamında
 
 protected mixed $statement;
+
+
 // private string $host = 'mysql';
 // private string $user = 'root';
 // private string $pass = 'password';
@@ -14,7 +16,6 @@ protected mixed $statement;
 
 // (production) ortamında
 
-// protected mixed $statement;
 private string $host = 'localhost';
 private string $user = 'oku323anladicom_mysql';
 private string $pass = '~WjRt2%35qmL1gunE!,PrW&A';

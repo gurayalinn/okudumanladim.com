@@ -393,19 +393,25 @@ AddDefaultCharset utf-8
 
 DirectoryIndex index.php index.html /index.php
 <IfModule mod_rewrite.c>
+
 # (1)
+
 RewriteEngine On
 
 # (2)
+
 Options +FollowSymlinks
 
 # (3)
+
 # Options +SymLinksIfOwnerMatch
 
 # (4)
+
 RewriteBase /
 
 # (5)
+
 # RewriteOptions <options>
 
     Redirect 301 "/stats" "https://analytics.eu.umami.is/share/DbXZOrTNnrfXGrL0/okudumanladim"
@@ -421,8 +427,6 @@ RewriteBase /
     RedirectMatch 403 ^/public/assets/?$
     RedirectMatch 403 ^/public/assets/images/?$
 
-
-
     # Remove trailing slash /
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} (.+)/$
@@ -435,8 +439,8 @@ RewriteBase /
 
     RewriteCond %{REQUEST_FILENAME}.php -f
     RewriteRule !.*\.php$ %{REQUEST_FILENAME}.php [QSA,L]
-</IfModule>
 
+</IfModule>
 
 # ----------------------------------------------------------------------
 
@@ -462,23 +466,23 @@ RewriteBase /
 
 # https://tools.ietf.org/html/draft-ietf-acme-acme-12
 
-<IfModule mod_rewrite.c>
+# <IfModule mod_rewrite.c>
 
-RewriteEngine On
+# RewriteEngine On
 
-RewriteCond %{HTTPS} !=on
+# RewriteCond %{HTTPS} !=on
 
 # # (1)
 
-RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/
+# # RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/
 
-RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[\w-]+$
+# # RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[\w-]+$
 
-RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+# # RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
 
-RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
-</IfModule>
+# </IfModule>
 
 # ----------------------------------------------------------------------
 
@@ -518,23 +522,25 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 # https://github.com/h5bp/server-configs-apache/issues/52
 
-# <IfModule mod_rewrite.c>
+<IfModule mod_rewrite.c>
 
-# RewriteEngine On
+RewriteEngine On
 
 # (1)
-# RewriteCond %{HTTPS} =on
-# RewriteRule ^ - [E=PROTO:https]
-# RewriteCond %{HTTPS} !=on
-# RewriteRule ^ - [E=PROTO:http]
+
+RewriteCond %{HTTPS} =on
+RewriteRule ^ - [E=PROTO:https]
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ - [E=PROTO:http]
 
 # (2)
-# RewriteCond %{HTTPS} !=on
 
-# RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-# RewriteRule ^ %{ENV:PROTO}://%1%{REQUEST_URI} [R=301,L]
+RewriteCond %{HTTPS} !=on
 
-# </IfModule>
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ %{ENV:PROTO}://%1%{REQUEST_URI} [R=301,L]
+
+</IfModule>
 
 # ----------------------------------------------------------------------
 
@@ -578,33 +584,33 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 # subdomains for certain parts of your website.
 
-<IfModule mod_rewrite.c>
+# <IfModule mod_rewrite.c>
 
-RewriteEngine On
+# RewriteEngine On
 
 # # (1)
 
-RewriteCond %{HTTPS} =on
+# RewriteCond %{HTTPS} =on
 
-RewriteRule ^ - [E=PROTO:https]
+# RewriteRule ^ - [E=PROTO:https]
 
-RewriteCond %{HTTPS} !=on
+# RewriteCond %{HTTPS} !=on
 
-RewriteRule ^ - [E=PROTO:http]
+# RewriteRule ^ - [E=PROTO:http]
 
 # # (2)
 
 # # RewriteCond %{HTTPS} !=on
 
- RewriteCond %{HTTP_HOST} !^www\. [NC]
+# RewriteCond %{HTTP_HOST} !^www\. [NC]
 
- RewriteCond %{SERVER_ADDR} !=127.0.0.1
+# RewriteCond %{SERVER_ADDR} !=127.0.0.1
 
- RewriteCond %{SERVER_ADDR} !=::1
+# RewriteCond %{SERVER_ADDR} !=::1
 
- RewriteRule ^ %{ENV:PROTO}://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+# RewriteRule ^ %{ENV:PROTO}://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
-</IfModule>
+# </IfModule>
 
 #
 
@@ -848,6 +854,7 @@ Header set X-XSS-Protection "1; mode=block"
 # https://developers.google.com/web/fundamentals/security/csp
 
 # https://content-security-policy.com/
+
 
 <IfModule mod_headers.c>
 

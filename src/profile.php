@@ -30,10 +30,10 @@ if (empty($_GET['username']) || !isset($_GET['username'])) {
   $guest = null;
 
   $username = $_GET['username'];
-  Util::debug_console($username);
+  //Util::debug_console($username);
 
   $guest = (new authController())->getGuest($username);
-  Util::debug_console($guest);
+  //Util::debug_console($guest);
 
   if (($guest) && $_GET['username'] !== null) {
 

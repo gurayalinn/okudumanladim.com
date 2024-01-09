@@ -24,37 +24,26 @@ $guest = new guestController;
 $userList = $guest->getUsersArray();
 
 
+    if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+    }
 
-if (isset($_SESSION['username'])) {
-$username = $_SESSION['username'];
-}
+    if (isset($_SESSION['uid'])) {
+    $uid = $_SESSION['uid'];
+    }
 
-if (isset($_SESSION['uid'])) {
-$uid = $_SESSION['uid'];
-}
+    if (isset($_SESSION['session'])) {
+    $session = $_SESSION['session'];
+  }
 
-if (isset($_SESSION['session'])) {
-$session = $_SESSION['session'];
-}
+  if (isset($_SESSION['result'])) {
+    $result = $_SESSION['result'];
+  }
 
-if (isset($_COOKIE['userResult'])) {
-$sonuc = $_COOKIE['userResult'];
-}
+  if (isset($_SESSION['created_at'])) {
+    $createdat = $_SESSION['created_at'];
+  }
 
-if (isset($_COOKIE['session'])) {
-$session = $_COOKIE['session'];
-}
-
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
-$response = (new authController())->loginGuest($_POST);
-
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search'])) {
-$response = (new authController())->loginGuest($_POST);
-
-}
 
 $title = ($username) . ' - ' . 'SONUC | okudumanladim.com';
 Util::head($title);
@@ -71,7 +60,7 @@ Util::head($title);
             href="/profile?username=<?= $username ?>"><strong><?= $username ?></strong></a></h4>
 
         <p style="color: var(--bs-body-color) !important;"> anketi <span class=" fw-bold text-info"
-            class="fw-bold"><?php echo $sonuc; ?></span>
+            class="fw-bold"><?php echo $result; ?></span>
           puan
           ile tamamladınız.</p>
       </div>
@@ -139,16 +128,16 @@ Util::head($title);
             <td><?= ($username); ?></td>
 
             <td class="">
-              <?php if ($sonuc === null)
+              <?php if ($result === null)
               {
-                $sonuc = "Anketi tamamlamadı.";
+                $result = "Anketi tamamlamadı.";
               }
               else
               {
-                $sonuc = $sonuc;
+                $result = $result;
               }
                ?>
-              <?= ($sonuc); ?>
+              <?= ($result); ?>
 
             </td>
 
@@ -156,8 +145,7 @@ Util::head($title);
               <?= ($session); ?>
             </td>
             <td>
-              <? $dateFormated2 = date("d.m.Y", $createdat); ?>
-              <?= Util::display($dateFormated2); ?>
+              <?= Util::display($createdat); ?>
             </td>
           </tr>
 
@@ -205,8 +193,7 @@ Util::head($title);
             </td>
 
             <td>
-              <? $dateFormated = date("d.m.Y", strtotime($row->createdat)); ?>
-              <?= Util::display($dateFormated); ?>
+              <?= Util::display(($row->createdat)); ?>
             </td>
 
             <td>
