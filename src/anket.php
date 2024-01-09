@@ -14,17 +14,23 @@ Util::isGuest();
 
 $guest = new guestController;
 $questions = $guest->getQuestionsArray();
+$response = null;
+$result = 0;
+
 if (isset($_COOKIE['result'])) {
+    $result = $_COOKIE['result'];
+}
+
+//Util::debug_console($result);
+//$answer = isset($_COOKIE['userAnswers']) ? $_COOKIE['userAnswers'] : null; // Eğer $_COOKIE['userAnswers'] set edilmişse değeri, değilse boş bir dize alır
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
+    $response = (new authController())->registerGuest($_POST);
+    if (isset($_COOKIE['result'])) {
     $result = $_COOKIE['result'];
 } else {
     $result = 0;
 }
-
-//$answer = isset($_COOKIE['userAnswers']) ? $_COOKIE['userAnswers'] : null; // Eğer $_COOKIE['userAnswers'] set edilmişse değeri, değilse boş bir dize alır
-$response = null;
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
-    $response = (new authController())->registerGuest($_POST);
 }
 
 Util::head('ANKET | okudumanladim.com');
@@ -32,7 +38,7 @@ Util::head('ANKET | okudumanladim.com');
 
 ?>
 
-<div id="survey" class="container d-flex justify-content-center align-items-center clearfix text-center mt-4">
+<div id="survey" class="container d-flex justify-content-center align-items-center clearfix text-center mt-4 m-auto">
 
   <div id="loader" class="loader">
     <img src="public/assets/images/favicon.svg" alt="loader">
@@ -47,47 +53,45 @@ Util::head('ANKET | okudumanladim.com');
     </div>
 
     <div id="user-container" class="row mt-2 justify-content-center align-items-center text-center" hidden>
+
       <div id="survey-result-container" class="row">
-        <div id="result-container" class="">
-
-
-
-        </div>
+        <div id="result-container" class=""></div>
       </div>
-      <div id="survey-user-input" class="col-4">
 
-        <div class="row">
-          <?php if (isset($response)) : ?>
-          <div class="alert alert-secondary" role="alert">
-            <?= Util::display($response); ?>
+      <div class="row">
+        <?php if (isset($response)) : ?>
+        <div class="alert alert-secondary" role="alert">
+          <?= Util::display($response); ?>
 
-            <?php if (isset($_POST['username']) && !empty($_POST['username']) && $response === 'Başarıyla gönderildi.') : ?>
-            <br>
-            <a class="link-info fw-bold text-muted" role="button" href="/profile?username=<?= $_POST['username'] ?>"
-              data-umami-event="<?= $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/profile?username=' . $_POST['username'] ?>"><strong>
-                Sonuçların : <?= $_POST['username'] ?></strong></a>
-            <?php endif; ?>
+          <?php if (isset($_POST['username']) && !empty($_POST['username']) && $response === 'Başarıyla gönderildi.') : ?>
 
-          </div>
-
+          <br>
+          <a class="link-info fw-bold text-muted" role="button" href="/profile?username=<?= $_POST['username'] ?>"
+            data-umami-event="<?= $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/profile?username=' . $_POST['username'] ?>"><strong>
+              Sonuçların : <?= $_POST['username'] ?></strong></a>
           <?php endif; ?>
+
         </div>
-        <?php if (!isset($_POST['username']) && empty($_POST['username']) && $response === null || $response !== 'Başarıyla gönderildi.') : ?>
-        <form method="POST" action="<?= Util::display($_SERVER['PHP_SELF']); ?>">
-          <div class="form-group input-group input-group-md">
+
+        <?php endif; ?>
+      </div>
+      <?php if (!isset($_POST['username']) && empty($_POST['username']) && $response === null || $response !== 'Başarıyla gönderildi.') : ?>
+
+      <form method="POST" action="<?= Util::display($_SERVER['PHP_SELF']); ?>">
+        <div id="survey-user-input" class="row gx-5 mx-auto clearfix">
+          <div class="form-group input-group input-group-md col-md">
             <input type="text" class="form-control form-control-md" placeholder="Kullanıcı Adı" name="username"
               minlength="3" aria-label="Username" aria-describedby="basic-addon1" autocomplete="off" required>
             <input type="hidden" name="session" value="<?= Util::randomCode(16); ?>">
-            <input type="hidden" name="result" value="<?= $result ?>">
+            <input type="hidden" name="result" value="<?= Util::display($result); ?>">
             <!-- <input type="hidden" name="answer" value="<? //htmlspecialchars($_COOKIE['userAnswers']); ?>"> -->
             <div id="submit-container" class=""></div>
-            <div id="submit-container" class=""></div>
           </div>
-        </form>
-        <?php endif; ?>
+        </div>
+      </form>
+      <?php endif; ?>
 
 
-      </div>
     </div>
 
     <div id="survey-container-button" class="row text-center mt-2">

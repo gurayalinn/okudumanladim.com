@@ -25,6 +25,14 @@ $createdat = null;
 $guest = new guestController;
 $userList = $guest->getUsersArray();
 
+    if (isset($_SESSION['result'])) {
+    $result = $_SESSION['result'];
+
+  } elseif (isset($_COOKIE['result'])) {
+    $result = $_COOKIE['result'];
+  } else {
+    $result = 0;
+  }
 
     if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
@@ -38,9 +46,6 @@ $userList = $guest->getUsersArray();
     $session = $_SESSION['session'];
   }
 
-  if (isset($_SESSION['result'])) {
-    $result = $_SESSION['result'];
-  }
 
   if (isset($_SESSION['created_at'])) {
     $createdat = $_SESSION['created_at'];
@@ -61,7 +66,7 @@ Util::head($title);
             href="/profile?username=<?= $username ?>"><strong><?= $username ?></strong></a></h4>
 
         <p style="color: var(--bs-body-color) !important;"> anketi <span class=" fw-bold text-info"
-            class="fw-bold"><?php echo $result; ?></span>
+            class="fw-bold"><?= ($result); ?></span>
           puan
           ile tamamladınız.</p>
       </div>

@@ -16,7 +16,7 @@ if (lastQuestionIndex !== null && lastQuestionIndex < questions.length) {
 
 function loadQuestion() {
   // Sayfa yüklendiğinde LocalStorage'dan kullanıcı cevaplarını al
-  let storedUserAnswers = localStorage.getItem(localStorageKey)
+  let storedUserAnswers = localStorage.getItem('userAnswers')
   if (storedUserAnswers) {
     userAnswers = JSON.parse(storedUserAnswers)
   }
@@ -42,7 +42,7 @@ function loadQuestion() {
     (currentQuestion + 1) +
     '</strong>'
   html +=
-    '<strong class="fw-semibold p-1 m-1 fs-6 text-info">' +
+    '<strong class="fw-semibold fs-6 text-info">' +
     question.category +
     '</strong>'
 
@@ -153,17 +153,6 @@ function loadPagination() {
   })
 }
 
-function saveAnswer() {
-  let selectedAnswer = $('input[name="answer"]:checked').val()
-  userAnswers[currentQuestion] = selectedAnswer
-
-  // Kullanıcı cevaplarını LocalStorage'a kaydet
-  localStorage.setItem(localStorageKey, JSON.stringify(userAnswers))
-  setCookie('userAnswers', JSON.stringify(userAnswers), 30)
-
-  loadQuestion()
-}
-
 function getQuestionStatus(questionIndex) {
   let selectedAnswer = userAnswers[questionIndex]
   if (selectedAnswer === undefined) {
@@ -214,10 +203,35 @@ function showResults() {
   let alertHtml = '<div class="alert alert-' + alertClass + '" role="alert">'
   alertHtml += resultMessage
   alertHtml += '</div>'
-
   setCookie('result', correctPercentage, 30)
+
   checkResultVisibility()
   $('#result-container').html(alertHtml)
+}
+
+function saveAnswer() {
+  let selectedAnswer = $('input[name="answer"]:checked').val()
+  userAnswers[currentQuestion] = selectedAnswer
+
+  let correctCount = 0
+
+  questions.forEach(function (question, index) {
+    let userAnswer = userAnswers[index]
+    if (userAnswer !== undefined && userAnswer === question.correct_answer) {
+      correctCount++
+    }
+  })
+
+  let correctPercentage = (correctCount / questions.length) * 100
+
+  localStorage.setItem('result', JSON.stringify(correctPercentage))
+  setCookie('result', JSON.stringify(correctPercentage), 30)
+
+  // Kullanıcı cevaplarını LocalStorage'a kaydet
+  localStorage.setItem('userAnswers', JSON.stringify(userAnswers))
+  setCookie('userAnswers', JSON.stringify(userAnswers), 30)
+
+  loadQuestion()
 }
 
 function deleteCookie(cname) {
@@ -382,6 +396,7 @@ $('#reset-btn').click(function () {
   loadQuestion()
   localStorage.removeItem('lastQuestionIndex')
   localStorage.removeItem('userCorrectQuestion')
+  localStorage.removeItem('result')
   localStorage.removeItem('userAnswers')
 
   location.reload()

@@ -33,7 +33,6 @@ if (empty($_GET['username']) || !isset($_GET['username'])) {
   //Util::debug_console($username);
 
   $guest = (new authController())->getGuest($username);
-  //Util::debug_console($guest);
 
   if (($guest) && $_GET['username'] !== null) {
 
@@ -51,6 +50,11 @@ if (empty($_GET['username']) || !isset($_GET['username'])) {
 
   if (isset($_SESSION['result'])) {
     $result = $_SESSION['result'];
+
+  } elseif (isset($_COOKIE['result'])) {
+    $result = $_COOKIE['result'];
+  } else {
+    $result = $guest->result;
   }
 
   if (isset($_SESSION['created_at'])) {

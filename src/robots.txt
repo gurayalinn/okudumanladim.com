@@ -7,6 +7,7 @@ Disallow: /lisans/
 Disallow: /admin/
 Disallow: /anket/
 Disallow: /sonuc/
+Disallow: /profile/
 Disallow: /proje/
 Disallow: /vendor/
 Disallow: /public/
