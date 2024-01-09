@@ -91,10 +91,13 @@ Util::head($title);
   </div>
 
 </div>
+
+
+
 <?php if ($userList === null) : ?>
 
-
 <strong class="text-danger p-1 m-2">Kullanıcı tablosu yüklenemedi.</strong>
+
 
 <?php else : ?>
 
@@ -214,9 +217,6 @@ Util::head($title);
       </table>
     </div>
   </div>
-  <?php endif; ?>
 </div>
-
-
-
 <?php Util::footer(); ?>
+<?php endif; ?>
