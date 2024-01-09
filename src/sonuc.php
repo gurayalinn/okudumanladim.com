@@ -12,6 +12,8 @@ include_once './inc/api/controllers/guestController.php';
 
 Util::isGuest();
 
+
+
 $userList = null;
 $sonuc = null;
 $username = null;
@@ -43,7 +45,6 @@ $userList = $guest->getUsersArray();
   if (isset($_SESSION['created_at'])) {
     $createdat = $_SESSION['created_at'];
   }
-
 
 $title = ($username) . ' - ' . 'SONUC | okudumanladim.com';
 Util::head($title);
@@ -218,5 +219,5 @@ Util::head($title);
     </div>
   </div>
 </div>
-<?php Util::footer(); ?>
 <?php endif; ?>
+<?php Util::footer(); ?>

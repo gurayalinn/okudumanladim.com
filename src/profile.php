@@ -64,11 +64,9 @@ if (empty($_GET['username']) || !isset($_GET['username'])) {
 }
 
 }
-Util::head($username . ' | okudumanladim.com');
 }
 
-
-
+Util::head($username . ' | okudumanladim.com');
 
 ?>
 
@@ -173,6 +171,6 @@ Util::head($username . ' | okudumanladim.com');
 
 
 </div>
-<?php Util::footer(); ?>
 
 <?php endif; ?>
+<?php Util::footer(); ?>
